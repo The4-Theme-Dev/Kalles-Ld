@@ -1,0 +1,185 @@
+a{
+    text-decoration:none;
+    &:hover, &:focus{
+       text-decoration:none;
+    }
+}
+.row.m0{
+    margin: 0px;
+}
+.p0{
+    padding: 0px;
+}
+i{
+    &:before{
+        margin-left: 0px !important;
+    }
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $pop;
+    color: #2c2c51;
+    font-weight: 600;
+}
+body{
+    font: 400 16px/28px $pop;
+    letter-spacing: 0px;
+    color: $p-color;
+    padding: 0px;
+    overflow-x: hidden;
+    z-index: 0;
+    position: relative;
+}
+.body_wrapper{
+    z-index: 20;
+    overflow: hidden;
+}
+.section_bg{
+    background-color: #f8fafb;
+}
+.btn_1{
+    border: 1px solid #5e2ced;
+    border-radius: 25px;
+    display: inline-block;
+    padding: 10px 40px;
+    background: #5e2ced;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    @include transform_time(.5s);
+    box-shadow: 0px 20px 50px 0px rgba(123, 78, 245, 0.3);
+    &:hover{
+        color: #fff;
+        box-shadow: none;
+    }
+}
+
+a,.btn,button{
+    text-decoration: none;
+    outline: none;
+    &:hover,&:focus{
+        text-decoration: none;
+        outline: none;
+    }
+}
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.sec_pad{
+    padding: 120px 0px;
+}
+.section_padding {
+    padding: 200px 0 120px;
+}
+.padding_top {
+    padding: 120px 0 0;
+}
+.padding_bottom {
+    padding: 0 0 120px;
+}
+
+@media (max-width: 991px) {
+    .sec_pad{
+        padding: 100px 0px;
+    }
+    .section_padding {
+        padding: 140px 0 100px;
+    }
+    .padding_top {
+        padding: 100px 0 0;
+    }
+    .padding_bottom {
+        padding: 0 0 100px;
+    }
+}
+
+
+@-webkit-keyframes circleAnimation {
+    0%,
+    100% {
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg); }
+    34% {
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      -webkit-transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 5px, 0) rotateZ(0.01deg); }
+    50% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg); }
+    67% {
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      -webkit-transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+      transform: translate3d(0, -3px, 0) rotateZ(0.01deg); } 
+}
+
+@keyframes circleAnimation {
+    0%,
+    100% {
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg); }
+    34% {
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+      -webkit-transform: translate3d(0, 5px, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 5px, 0) rotateZ(0.01deg); }
+    50% {
+      -webkit-transform: translate3d(0, 0, 0) rotateZ(0.01deg);
+      transform: translate3d(0, 0, 0) rotateZ(0.01deg); }
+    67% {
+      border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+      -webkit-transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+      transform: translate3d(0, -3px, 0) rotateZ(0.01deg); } 
+}
+
+@keyframes jumping_animation {
+    0% {
+        transform: translateY(0px) translateX(0) rotate(0) scale(1);
+        opacity: .8;
+    }
+    50% {
+        transform: translateY(-25px) translateX(-25px) rotate(5deg) scale(.75);
+        opacity: .9;
+    }
+    100% {
+        transform: translateY(-25px) translateX(-25px) rotate(0) scale(1);
+        opacity: .85;
+    }
+}
+
+@-webkit-keyframes round_circle {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate(-50%, -50%) scale(0 0.2);
+        transform: translate(-50%, -50%) scale(0.02);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) scale(1.2);
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes round_circle {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate(-50%, -50%) scale(0.02);
+        transform: translate(-50%, -50%) scale(0.02);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) scale(1.2);
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+.mark_text{
+    color: #5e2ced;
+    background-color: transparent;
+    padding: 0;
+}
+

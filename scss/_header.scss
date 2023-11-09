@@ -1,0 +1,263 @@
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding: 0;
+    z-index:9;
+    border-bottom:0px;
+    transition:all .4s ease-in-out
+}
+.navbar .container-fluid{
+    padding-left:60px;
+    padding-right:60px;
+}
+@media (max-width:767px){
+    .navbar{
+        padding-left:15px;
+        padding-right:15px;
+        z-index:1000
+    }
+}
+.navbar .logo_h{
+    padding:0;
+    line-height:20px;
+    display:inline-block
+}
+.navbar .logo_h img{
+    max-width:156px;
+    display:inline-block
+}
+@media (max-width:767px){
+    .navbar .navbar-collapse{
+        margin-left:-15px!important;
+        margin-right:-15px!important
+    }
+}
+@media (max-width:991px){
+    .navbar .nav{
+        background:rgba(255,255,255,.96);
+        margin-top:10px!important;
+        padding:10px 20px;
+        transition:all .3s linear
+    }
+}
+.navbar .nav .nav-item{
+    margin-left:30px;
+    position:relative
+}
+.navbar .nav .nav-item:first-child{
+    margin-left: 0;
+}
+@media (max-width:991px){
+    .navbar .nav .nav-item{
+        margin-left:0;
+        padding:10px 0
+    }
+}
+.navbar .nav .nav-item .nav-link,.navbar .fb_like .fb_like_link{
+    font:500 14px/20px "Poppins",sans-serif;
+    color:#2c2c51;
+    position:relative;
+    padding:0;
+    text-transform:capitalize
+}
+
+.navbar .nav .nav-item .nav-link:hover,.navbar .nav .nav-item .nav-link.active,.navbar .fb_like .fb_like_link:hover{
+    color:#5e2ced
+}
+
+.navbar .fb_like .fb_like_link + .fb_like_link{
+    margin-left: 30px;
+}
+
+.navbar .nav .nav-item .purchase_btn,.purchase_btn{
+    border:1px solid #5e2ced;
+    border-radius:25px;
+    display:inline-block;
+    padding:12px 40px;
+    background:#5e2ced;
+    color:#fff;
+    font-size:16px;
+    font-family:"Poppins",sans-serif;
+    font-weight:500;
+    transition: all 0.3s linear;
+}
+.navbar .nav .nav-item .purchase_btn:before,.purchase_btn:before{
+    display:none
+}
+
+.navbar .nav .nav-item .purchase_btn:hover,.purchase_btn:hover{
+    background: transparent;
+    color:#5e2ced;
+}
+
+.navbar-nav.navbar-right{
+    padding-left: 0;
+}
+@media (max-width:767px){
+    .navbar .nav.navbar-right{
+        display:none
+    }
+}
+.navbar .nav.navbar-right .nav-item:before{
+    display:none
+}
+
+.navbar_fixed{
+    background: #fff;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px 0 rgba(12,0,46,.06);
+}
+.navbar-toggler{
+    padding: 0px;
+    border: 0px;
+}
+.navbar-toggler .icon-bar {
+    background-color: #5e2ced;
+    transition: all .5s linear;
+    display: block;
+    width: 22px;
+    height: 2px;
+}
+.navbar-toggler .icon-bar+.icon-bar {
+    margin-top: 5px;
+}
+.navbar-toggler .icon-bar:nth-child(2) {
+    transform: rotate(-45deg);
+}
+.navbar-toggler.collapsed .icon-bar:nth-child(2) {
+    transform: rotate(0deg);
+}
+.navbar-toggler .icon-bar:nth-child(3) {
+    opacity: 0;
+}
+.navbar-toggler.collapsed .icon-bar:nth-child(3) {
+    opacity: 1;
+}
+.navbar-toggler .icon-bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 7px;
+    position: relative;
+}
+.navbar-toggler.collapsed .icon-bar:nth-child(1) {
+    transform: rotate(0deg);
+    top: 0;
+}
+#saasLandCollapes{
+    .nav-item{
+        @media (max-width: 992px){
+            display: block;
+            width: 100%;
+        }
+        .nav-link{
+            padding: 35px 0;
+            display: block;
+            @media (max-width: 992px){
+                padding: 4px 0;
+            }
+        }
+        &.dropdown{
+            .dropdown-toggle::after{
+                border: 0px solid transparent;
+                content: "\e64b";
+                font-family: 'themify';
+                font-size: 10px;
+                vertical-align: 1px;
+                margin-left: 7px;
+            }
+            .dropdown-menu{
+                margin: 0;
+                padding: 0;
+                border: 0px solid transparent;
+                padding: 20px 0;
+                transition:all .3s linear;
+                box-shadow: 0px 10px 30px 0px rgba(7, 28, 55, 0.08);
+                @media (min-width: 992px){
+                    transform: translateY(0);
+                    display: block;
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                @media (min-width: 992px){
+                    transform: translateY(15px);
+               }
+            }
+            &:hover{
+               .dropdown-menu{
+                    @media (min-width: 992px){
+                        transform: translateY(0);
+                        display: block;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+            .dropdown-item{
+                font: 500 14px/20px "Poppins",sans-serif;
+                color: #2c2c51;
+                position: relative;
+                padding: 10px 30px;
+                text-transform: capitalize;
+                :hover{
+                    background-color: transparent;
+                }
+            }
+        }
+        .dropdown-item:focus, .dropdown-item:hover {
+            color: #5e2ced;
+            background-color: transparent;
+        }
+    } 
+}
+.landing_navbar{
+    @media (max-width: 992px){
+        padding: 15px 0;
+    }
+    @media (max-width: 576px){
+        .navbar-collapse{
+            max-height: 480px;
+            overflow-Y: scroll;
+        }
+            
+    }
+    .purchase_btn{
+        border: 2px solid #5e2ced;
+        border-radius: 25px;
+        display: inline-block;
+        padding: 10px 40px;
+        background: #5e2ced;
+        color: #fff;
+        font-size: 16px;
+        font-family: "Poppins",sans-serif;
+        font-weight: 500;
+        -webkit-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        &:hover{
+            background-color: transparent;
+            color: #5e2ced;
+            border: 2px solid #b196fa;
+        }
+        @media (max-width: 992px){
+            font-size: 11px;
+            padding: 4px 15px;
+        }
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            font-size: 12px;
+            padding: 7px 15px;
+        }
+        i{
+            padding-right: 8px;
+        }
+    }
+}
+.dropdown{
+    &:hover{
+        > .dropdown-toggle{
+            color: #5e2ced !important;
+        }
+    }
+}

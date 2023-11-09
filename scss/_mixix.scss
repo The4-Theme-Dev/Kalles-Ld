@@ -1,0 +1,4 @@
+@mixin transform_time($total_time) {
+    -webkit-transition: $total_time;
+    transition: $total_time;
+}

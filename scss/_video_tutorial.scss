@@ -1,0 +1,222 @@
+.video_tutorial {
+    .single_video_tutorial {
+        margin-bottom: 53px;
+
+        .video_tutorial_content {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0px 20px 40px 0px rgba(1, 1, 64, 0.1);
+
+            &:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba($color: #2c2c51, $alpha: .5);
+                border-radius: 6px;
+                opacity: 1;
+                @include transform_time(.3s);
+            }
+
+            img {
+                width: 100%;
+                border-radius: 6px;
+            }
+
+            &:hover {
+                &:after {
+                    opacity: 0;
+                }
+            }
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            line-height: 28px;
+            margin-top: 23px;
+        }
+
+        a {
+            line-height: 60px;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            font-size: 35px;
+            transition: all .5s linear;
+
+            i {
+                color: #5e2ced;
+                transform: translateY(-50%);
+                text-shadow: 0px 6px 12px rgba(126, 81, 253, 0.5);
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 48%;
+                transition: all .5s linear;
+            }
+
+            &:hover {
+                i {
+                    text-shadow: none;
+                }
+            }
+        }
+
+    }
+}
+
+.video_tutorial_content {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-image: url(../img/youtube_thumb/01_banner.jpg);
+}
+
+.bg_1 {
+    background-image: url(../img/youtube_thumb/01_banner.jpg);
+}
+
+.bg_2 {
+    background-image: url(../img/youtube_thumb/02_banner.jpg);
+}
+
+.bg_3 {
+    background-image: url(../img/youtube_thumb/03_banner.jpg);
+}
+
+.bg_4 {
+    background-image: url(../img/youtube_thumb/04_banner.jpg);
+}
+
+.bg_5 {
+    background-image: url(../img/youtube_thumb/05_banner.jpg);
+}
+
+.bg_6 {
+    background-image: url(../img/youtube_thumb/06_banner.jpg);
+}
+
+.bg_7 {
+    background-image: url(../img/youtube_thumb/07_banner.jpg);
+}
+
+.bg_8 {
+    background-image: url(../img/youtube_thumb/08_banner.jpg);
+}
+
+.bg_9 {
+    background-image: url(../img/youtube_thumb/09_banner.jpg);
+}
+
+.bg_10 {
+    background-image: url(../img/youtube_thumb/10_banner.jpg);
+}
+
+.bg_11 {
+    background-image: url(../img/youtube_thumb/11_banner.jpg);
+}
+
+.bg_12 {
+    background-image: url(../img/youtube_thumb/12_banner.jpg);
+}
+
+.bg_13 {
+    background-image: url(../img/youtube_thumb/13_banner.jpg);
+}
+
+.bg_14 {
+    background-image: url(../img/youtube_thumb/14_banner.jpg);
+}
+
+
+
+//css 
+.section_title .number {
+    font-size: 70px;
+    line-height: 60px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    background-image: -moz-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    background-image: -webkit-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    background-image: -ms-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+
+.section_title .number sup {
+    font-weight: 500;
+    background-image: -moz-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    background-image: -webkit-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    background-image: -ms-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    top: -.4em;
+}
+
+.filtering_demos {
+    margin-bottom: -20px;
+
+    .nav-tabs .nav-item {
+        margin-bottom: 20px;
+
+        span {
+            background-image: -moz-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+            background-image: -webkit-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+            background-image: -ms-linear-gradient(70deg, #3a2bdc 18%, #8545eb 51%, #cf5ff9 68%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 0px;
+            border-radius: 25px;
+            position: absolute;
+            font-weight: 600;
+            top: -12px;
+            right: -18px;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+}
+
+.filtering_demos .nav-tabs .nav-item.active {
+    color: #5e2ced;
+    background: transparent;
+}
+
+.filtering_demos .nav-tabs .nav-item.active span {
+    color: #5e2ced;
+}
+
+
+.f_content .g_logo {
+    border-radius: 50%;
+    margin-bottom: 35px;
+    background-image: -moz-linear-gradient(60deg, #5e2ced 0%, #8359f8 100%);
+    background-image: -webkit-linear-gradient(60deg, #5e2ced 0%, #8359f8 100%);
+    background-image: -ms-linear-gradient(60deg, #5e2ced 0%, #8359f8 100%);
+    -webkit-box-shadow: 0px 20px 30px 0px rgba(18, 1, 64, 0.1);
+    box-shadow: 0px 20px 30px 0px rgba(18, 1, 64, 0.1);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
