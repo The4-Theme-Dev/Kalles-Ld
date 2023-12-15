@@ -1,0 +1,429 @@
+effect-custom {
+  position: relative;
+  height: 100%;
+  display: inline-block;
+}
+
+effect-custom [effect-parent] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  filter: blur(5px);
+}
+
+effect-custom [effect-parent] span {
+  width: var(--size, 90px);
+  height: var(--size, 90px);
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  background: var(--color, linear-gradient(80.57deg, #CE1BFB 10.86%, #35E6CC 89.96%));
+  --size: 200px;
+  border-radius: 100%;
+  animation-name: move;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-delay: var(--animation-delay);
+  filter: blur(15px);
+  transition: all 1.5s linear;
+  opacity: 0.5;
+}
+
+effect-custom [effect-parent] span:nth-child(1) {
+  --size: 50px;
+  --top: 5%;
+  --left: 25%;
+  --color: linear-gradient(80.57deg, #5128E3 10.86%, #AA3BF2 89.96%);
+  --animation-delay: 1s;
+
+}
+
+effect-custom [effect-parent] span:nth-child(2) {
+  --size: 50px;
+  --top: 9%;
+  --left: 40%;
+  --color: linear-gradient(99.68deg, #00BAD4 7.72%, #2194FF 118.76%);
+  --animation-delay: 2s;
+
+}
+
+effect-custom [effect-parent] span:nth-child(3) {
+  --size: 50px;
+  --top: 10%;
+  --left: 50%;
+  --color: linear-gradient(80.57deg, #CE1BFB 10.86%, #35E6CC 89.96%);
+  --animation-delay: 3s;
+}
+
+effect-custom [effect-parent] span:nth-child(4) {
+  --size: 50px;
+  --top: 10%;
+  --left: 50%;
+  --animation-delay: 3s;
+}
+
+effect-custom [effect-parent] span:nth-child(5) {
+  --size: 30px;
+  --top: 13%;
+  --left: 15%;
+  --animation-delay: 3s;
+}
+
+effect-custom [effect-parent] span:nth-child(6) {
+  --size: 20px;
+  --top: 10%;
+  --left: 50%;
+  --animation-delay: 3s;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  z-index: 2;
+}
+
+@keyframes move {
+
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) translateZ(0);
+  }
+
+  10% {
+    transform: translateX(20%) translateY(5%) translateZ(20px);
+  }
+
+  20% {
+    transform: translateX(70%) translateY(2%) translateZ(20px);
+  }
+
+  30% {
+    transform: translateX(100%) translateY(5%) translateZ(20px);
+  }
+
+  40% {
+    transform: translateX(40%) translateY(2%) translateZ(20px);
+  }
+
+  50% {
+    transform: translateX(-10%) translateY(5%) translateZ(20px);
+  }
+
+  60% {
+    transform: translateX(-60%) translateY(2%) translateZ(20px);
+  }
+
+  70% {
+    transform: translateX(-100%) translateY(5%) translateZ(20px);
+  }
+
+  80% {
+    transform: translateX(-50%) translateY(2%) translateZ(20px);
+  }
+
+  90% {
+    transform: translateX(-30%) translateY(5%) translateZ(20px);
+  }
+
+}
+
+/* filltext */
+fill-text {
+  height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+fill-text .fill-inner {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 300px;
+  display: flex;
+  align-items: center;
+
+}
+
+fill-text .text span {
+  opacity: 0.3;
+  transition: opacity .35s linear;
+  will-change: opacity;
+  color: #fff;
+}
+
+fill-text .text .highlight {
+  opacity: 1;
+}
+
+/* effect svg opacity */
+
+@keyframes line-eff {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: rotate(0) scale(1) translate3d(0, 0, 0);
+  }
+
+  50% {
+    opacity: .7;
+    transform: rotate(0) scale(1) translate3d(0, 0, 300px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translate(0, 0)
+  }
+
+  1.78571% {
+    transform: translate(5px, 0)
+  }
+
+  3.57143% {
+    transform: translate(0, 0)
+  }
+
+  5.35714% {
+    transform: translate(5px, 0)
+  }
+
+  7.14286% {
+    transform: translate(0, 0)
+  }
+
+  8.92857% {
+    transform: translate(5px, 0)
+  }
+
+  10.71429% {
+    transform: translate(0, 0)
+  }
+
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+/* text circle */
+
+.rounded-text {
+  width: 25.625rem;
+  height: 25.625rem;
+  text-transform: uppercase;
+  transform: rotate(-103deg);
+  color: #fff;
+  font-weight: bold;
+  z-index: -1;
+  font-family: Raleway;
+}
+
+.white {
+  fill: #fff;
+}
+
+.yellow {
+  fill: #ffda2a;
+}
+
+.green {
+  fill: #00d3b9;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.rotating {
+  animation: rotating 12s linear infinite;
+}
+
+@keyframes coloring {
+  0% {
+    fill: #fff;
+  }
+
+  35% {
+    fill: #ffda2a;
+  }
+
+  75% {
+    fill: #00d3b9;
+  }
+
+  100% {
+    fill: #fff;
+  }
+}
+
+.coloring {
+  animation: coloring 12s linear infinite;
+}
+
+@keyframes circle_linear {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+}
+
+@keyframes rl_s_loading {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0.15;
+  }
+}
+
+/*  animated border */
+.lip_bor {
+  --anime-time: 8s;
+  --box-size: 200px;
+  --clip-distance: 0.05;
+  --clip-size: calc((var(--box-size) * (1 + var(--clip-size) * 2)));
+  --path-width: 2px;
+  --main-color: #fff;
+}
+
+.lip_bor {
+  width: var(--box-size);
+  height: var(--box-size);
+  color: var(--main-color);
+  position: relative;
+}
+
+.lip_bor::before,
+.lip_bor::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  z-index: -1;
+  margin: calc(-1 * var(--clip-distance) * 100%);
+  animation: lip_bor var(--anime-time) linear infinite;
+  box-shadow: inset 0 0 0 var(--path-width);
+}
+
+.lip_bor::before {
+  animation-delay: calc(var(--anime-time) * -0.5);
+}
+
+.lip_bor:hover::before,
+.lip_bor:hover::after {
+  background-color: red;
+}
+
+@keyframes lip_bor1 {
+
+  0%,
+  100% {
+    clip: rect(0px, var(--clip-size), var(--path-width), 0px);
+  }
+
+  25% {
+    clip: rect(0px, var(--path-width), var(--clip-size), 0px);
+  }
+
+  50% {
+    clip: rect(calc(var(--clip-size) - var(--path-width)), calc(var(--clip-size), var(--clip-size)), 0px);
+  }
+
+  75% {
+    clip: rect(0px, var(--clip-size), var(--clip-size), var(--clip-size) - var(--path-width));
+  }
+}
+
+@keyframes lip_bor {
+
+  0%,
+  100% {
+    clip: rect(0px, 220px, 2px, 0px);
+  }
+
+  25% {
+    clip: rect(0px, 2px, 220px, 0px);
+  }
+
+  50% {
+    clip: rect(218px, 220px, 220px, 0px);
+  }
+
+  75% {
+    clip: rect(0px, 220px, 220px, 218px);
+  }
+}
+
+.animated-trigger-inter {
+  transition: .5s linear;
+}
