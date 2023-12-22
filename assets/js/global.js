@@ -253,9 +253,9 @@ class textTyping extends HTMLElement {
     this.isTyping = true; // Whether we are currently typing or erasing
     // Define an array of strings to be displayed and erased
     this.textArray = [
-      "Hello!",
-      "Product customers want",
-      "Kalles landing page"
+      "Christmas sale!",
+      "Fashion trending 2024",
+      "Kalles trending product"
       // Add more strings as needed
     ];
     // Set an interval to call the typeJs function
@@ -311,7 +311,7 @@ class partner extends HTMLElement {
     if (!this.tabs) {
       return;
     }
-    this.initSlider();
+    // this.initSlider();
     this.tabsAction();
 
   }
@@ -371,4 +371,33 @@ class backTop extends HTMLElement {
     });
   }
 }
-customElements.define('back-top', backTop); 
+customElements.define('back-top', backTop);
+
+// ============================
+// custom modal
+// ============================
+class passPopup extends HTMLElement {
+  constructor() {
+    super();
+    this.overlay = this.querySelector('.overlay');
+    this.btn_close = this.querySelector('button.close');
+    this.view_now = this.querySelector('button.view_now');
+    this.close();
+  }
+  close() {
+    let self = this;
+    this.overlay.addEventListener('click', () => {
+      self.classList.remove('open');
+    })
+    this.btn_close.addEventListener('click', () => {
+      self.classList.remove('open');
+    })
+    this.view_now.addEventListener('click', () => {
+      self.classList.remove('open');
+      if (self.view_now.getAttribute('data-location')) {
+        window.open(self.view_now.getAttribute('data-location'), '_blank');
+      }
+    })
+  }
+}
+customElements.define('password-popup', passPopup)
