@@ -3,34 +3,6 @@
 // ===============================
 
 
-// ===============================
-//  fill text when scrolling
-// ===============================
-
-// STRUCT
-// <fillText>
-//  <span class="text">lorem isum ....</span>
-// </fillText>
-// 
-
-// window.addEventListener('scroll', () => {
-//   let scroll = getScrollFraction();
-//   let words_highlighted = scroll * words.length;
-
-//   text.innerHTML = words
-//   .map((w, i) => `<span ${i < words_highlighted ? HIGHLIGHT : ''}>${w}</span>`)
-//   .join(' ');
-// })
-
-// from https://stackoverflow.com/a/8028584/2931840
-//
-// function getScrollFraction() {
-//     var h = document.documentElement, 
-//         b = document.body,
-//         st = 'scrollTop',
-//         sh = 'scrollHeight';
-//     return (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight);
-// }
 
 class fillTextScrolling extends HTMLElement {
   constructor() {
@@ -79,20 +51,23 @@ class Effect extends HTMLElement {
     if (!this.querySelector('[effect-parent]')) {
       return
     }
-    if(window.innerWidth < 767){
+    if (window.innerWidth < 767) {
       return;
     }
-    this.EffNum = this.getAttribute('eff-num');
+    // this.EffNum = this.getAttribute('eff-num');
+    this.EffNum = 3;
     this.container = this.querySelector('div[effect-parent]');
     this.background = 'none';
     this.createChild();
-   
-    this.addEventListener('mousemove', (e) => {
-      this.onHover(e);
-    })
-    this.addEventListener('mouseleave', () => {
-      this.leaveHover();
-    })
+
+    if (window.innerWidth > 1149) {
+      this.addEventListener('mousemove', (e) => {
+        this.onHover(e);
+      })
+      this.addEventListener('mouseleave', () => {
+        this.leaveHover();
+      })
+    }
   }
   createChild() {
     // console.log("if > 3 item => Random color is running");
@@ -149,4 +124,3 @@ class Effect extends HTMLElement {
   }
 }
 customElements.define('effect-custom', Effect);
-

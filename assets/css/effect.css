@@ -989,7 +989,7 @@ fill-text .text .highlight {
 }
 
 .custom_modal .m_b_kl {
-  color: #000;
+  --link-color: #000;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -1037,7 +1037,12 @@ fill-text .text .highlight {
 .custom_modal .ctxx_::-webkit-scrollbar-thumb:hover {
   background: #000;
 }
-
+.animatedText {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+}
 @media (max-width: 1440px) {
   .custom_modal .m_btns {
     margin-top: 25px;

@@ -1,7 +1,10 @@
-$(document).on('DOMContentLoaded', function () {
+$(document).on('DOMContentLoaded', function() {
   // wowjs
-  new WOW({ mobile: false, }).init();
+  new WOW({
+    mobile: true,
+  }).init();
   // topbar
+
   let swiperOptions = {
     speed: 10000,
     autoplay: {
@@ -17,31 +20,26 @@ $(document).on('DOMContentLoaded', function () {
     allowTouchMove: false
   };
   let topbar = new Swiper(".topbar .swiper", swiperOptions);
-
   // active link
-  $(document).on('click', '.header .nav_link', function () {
-    console.log(1);
+  $(document).on('click', '.header .nav_link', function() {
     $('.header').find('.nav_link.active').removeClass('active');
     $(this).addClass('active')
   })
-  // active link on mobile
-  $(document).on('click', '#menu_mobile .nav_link', function () {
-    console.log(1);
+
+  // // active link on mobile
+  $(document).on('click', '#menu_mobile .nav_link', function() {
     $('#menu_mobile').find('.nav_link.active').removeClass('active');
     $(this).addClass('active')
   })
-  $(window).on('resize', function () {
+
+  $(window).on('resize', function() {
     if (window.innerWidth > 1149) {
       $('#menu_mobile,.cta_menu_mb.open').removeClass('open');
     }
   })
-  $(window).on('load', function () {
-    $('.header header-custom').addClass('open');
-    $('.header .logo_brand').addClass('effect-running');
-    if(window.innerWidth < 767){
-      console.log("Delete poster video on mobile.");
-      $('video').removeAttr('poster');
-    }
+  $(window).on('load', function() {
+    $('header-custom').addClass('open');
+    $('header-custom .logo_brand').addClass('effect-running');
   });
 
   //  isotope  demos 
@@ -50,17 +48,19 @@ $(document).on('DOMContentLoaded', function () {
     layoutMode: "fitRows",
     filter: "*",
   });
-  $("[filter-tabs]").on("click", "a.demos_tab_item", function (e) {
+  $(document).on("click", "[filter-tabs] a.demos_tab_item", function(e) {
     e.preventDefault();
-    $(this).parents('[filter-tabs]').find('a.demos_tab_item.active').removeClass('active')
-    $(this).toggleClass('active')
+    $('[filter-tabs] a.demos_tab_item.active').removeClass('active')
+    $(this).addClass('active')
     let filterValue = $(this).attr("data-filter");
-    $grid.isotope({ filter: filterValue });
+    $grid.isotope({
+      filter: filterValue
+    });
   });
 
   //  tabs_demos scroll
 
-  $('#tabs_scroll').on('click', 'ul li .control-scroll', function () {
+  $(document).on('click', '#tabs_scroll ul li .control-scroll', function() {
     $(this).parents('ul').find('.control-scroll.active').removeClass('active');
     $(this).addClass('active')
   })
@@ -96,7 +96,7 @@ $(document).on('DOMContentLoaded', function () {
     let in_space = 9;
     $('.tb_row').hide();
     $(rows.splice(index0, in_space)).show();
-    $(document).on('click', '[table_loadmore]', function (e) {
+    $(document).on('click', '[table_loadmore]', function(e) {
       e.preventDefault();
       $(rows.splice(index0, 300)).slideDown();
       $(this).hide();
@@ -184,14 +184,14 @@ $(document).on('DOMContentLoaded', function () {
     allowTouchMove: false,
   });
 
-  $(document).on('click', '.vt button', function () {
+  $(document).on('click', '.vt button', function() {
     $('.vt button.active').removeClass('active');
     vid_tes.slideTo($(this).data("index"));
     $(this).addClass('active')
   })
 
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
   // sticky featured
   let header_height = $('header-custom').height();
@@ -224,7 +224,7 @@ $(document).on('DOMContentLoaded', function () {
   //    Modal popup
   // ==================
   const modalPopup = () => {
-    $(document).on('click', '[m-modal] .box-popup_click', function (e) {
+    $(document).on('click', '[m-modal] .box-popup_click', function(e) {
       e.preventDefault();
       let parent = $(this).parents('[m-modal]');
       let pop_item = {
@@ -237,7 +237,7 @@ $(document).on('DOMContentLoaded', function () {
       contentModal(pop_item);
       openModal('.custom_modal')
     });
-    $(document).on('click', '.custom_modal .overlay,.custom_modal .close-btn', function () {
+    $(document).on('click', '.custom_modal .overlay,.custom_modal .close-btn', function() {
       closeModal('.custom_modal')
     })
   }
@@ -269,13 +269,17 @@ $(document).on('DOMContentLoaded', function () {
   // ==================
 
   const openPopupLink = () => {
+    let flag = false
+    $(document).on('click', '[openPopupLink] a', function(e) {
 
-    $(document).on('click', '[openPopupLink] a', function (e) {
-      e.preventDefault();
       let url = $(this).attr('href');
-      $('password-popup').addClass('open');
       $('password-popup button.view_now').attr('data-location', url);
-
+      if(flag == true){
+        return;
+      }
+      e.preventDefault();
+      $('password-popup').addClass('open');
+      flag= true;
     })
   }
 
@@ -284,11 +288,18 @@ $(document).on('DOMContentLoaded', function () {
 
   // reveal when scroll clean text
   const rClear = () => {
+    if (window.innerWidth < 1150) {
+      return;
+    }
     let reveals = document.querySelectorAll('[text-animate-reveal]');
     // attr parent
-    $('[text-reaveals-parent]').css({ 'perspective': '700px', 'transformStyle': 'preserve-3d', 'perspectiveOrigin': '100% 0%' })
+    $('[text-reaveals-parent]').css({
+      'perspective': '700px',
+      'transformStyle': 'preserve-3d',
+      'perspectiveOrigin': '100% 0%'
+    })
     if (window.innerWidth > 768) {
-      $(window).on('scroll', function () {
+      $(window).on('scroll', function() {
         reveals.forEach((el, index) => {
           const windowHeight = window.innerHeight;
           const revealTop = el.getBoundingClientRect().top;
@@ -301,7 +312,8 @@ $(document).on('DOMContentLoaded', function () {
           el.style.translate = 'none';
           el.style.rotate = 'none';
           el.style.scale = 'none';
-          el.style.transition = 'all .35s ease';
+          el.style.transition = 'transform .25s linear';
+          el.style.willChange = 'transform';
           // console.log(revealTop > windowHeight - revealPoint);
           if (revealTop > windowHeight - revealPoint) {
             if (index == 0) {
@@ -327,8 +339,7 @@ $(document).on('DOMContentLoaded', function () {
                 el.style.transform = `translateX(${schemas / 10 - 7}%)`;
               }
 
-            }
-            else {
+            } else {
               el.style.transform = `translate(0,0)`
             }
           }

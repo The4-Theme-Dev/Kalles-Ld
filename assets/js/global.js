@@ -3,7 +3,7 @@
 // ============================
 class Header extends HTMLElement {
   constructor() {
-    super()
+    super();
     this.config = JSON.parse(this.getAttribute('config'));
     this.cta_mb = this.querySelector('.cta_menu_mb');
     this.menu_mobile = document.querySelector('#menu_mobile');
@@ -52,7 +52,7 @@ class Header extends HTMLElement {
       return;
     }
     let self = this;
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
       if (document.body.scrollTop > 56 || document.documentElement.scrollTop > 56) {
         // console.log(self);
         self.classList.add('header-sticky')
@@ -70,6 +70,7 @@ class Header extends HTMLElement {
 customElements.define('header-custom', Header)
 
 
+
 // ============================
 // Banner tabs-builder
 // ============================
@@ -77,7 +78,6 @@ customElements.define('header-custom', Header)
 class tabsBuilder extends HTMLElement {
   constructor() {
     super();
-
     this.tabs = this.querySelectorAll('.tab-item');
     if (!this.tabs) {
       return;
@@ -108,10 +108,10 @@ class tabsBuilder extends HTMLElement {
         clickable: true,
       },
       on: {
-        init: function () {
+        init: function() {
           // console.log(" init");
         },
-        update: function () {
+        update: function() {
           // console.log('update');
         }
       },
@@ -132,10 +132,10 @@ class tabsBuilder extends HTMLElement {
         perSlideRotate: 15,
       },
       on: {
-        init: function () {
+        init: function() {
           console.log(" init");
         },
-        update: function () {
+        update: function() {
           console.log('update');
         }
       },
@@ -148,7 +148,7 @@ class tabsBuilder extends HTMLElement {
   tabsList() {
     let self = this;
     this.tabs.forEach(tab => {
-      tab.addEventListener('click', function () {
+      tab.addEventListener('click', function() {
         let tabs_active = self.querySelector('.tab-item.active');
         if (tabs_active) {
           tabs_active.classList.remove('active');
@@ -179,7 +179,7 @@ class tabsBuilder extends HTMLElement {
       let btns = self.querySelectorAll('button.item');
       if (btns) {
         btns.forEach(btn => {
-          btn.addEventListener('click', function () {
+          btn.addEventListener('click', function() {
 
             self.querySelector('.tab_content_inner.active button.item.active').classList.remove('active');
             btn.classList.add('active');
@@ -208,6 +208,7 @@ class tabsBuilder extends HTMLElement {
 
 }
 customElements.define('tabs-builder', tabsBuilder)
+
 // ============================
 // video custom
 // ============================
@@ -230,7 +231,7 @@ class customVideo extends HTMLElement {
   }
   playVideo() {
     let self = this;
-    self.video.addEventListener('ended', function () {
+    self.video.addEventListener('ended', function() {
       self.video.currentTime = self.starttime;
       // console.log();
       self.video.play();
@@ -240,12 +241,16 @@ class customVideo extends HTMLElement {
 
 }
 customElements.define('custom-video', customVideo)
+
 // ============================
 // Text typing
 // ============================
 class textTyping extends HTMLElement {
   constructor() {
     super();
+    if(window.innerWidth < 767){
+      // return;
+    }
     // Initialize variables
     this.typeJsText = this.querySelector(".animatedText");
     this.stringIndex = 0; // Index of the current string in the array
@@ -358,14 +363,14 @@ class backTop extends HTMLElement {
   }
   backtop() {
     let self = this;
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', function() {
       if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         self.classList.add('show')
       } else {
         self.classList.remove('show')
       }
     });
-    self.addEventListener('click', function () {
+    self.addEventListener('click', function() {
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
     });
