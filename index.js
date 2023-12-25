@@ -1,6 +1,6 @@
 $(document).on('DOMContentLoaded', function () {
   // wowjs
-  new WOW().init();
+  new WOW({ mobile: false, }).init();
   // topbar
   let swiperOptions = {
     speed: 10000,
@@ -36,8 +36,12 @@ $(document).on('DOMContentLoaded', function () {
     }
   })
   $(window).on('load', function () {
-    $('.header .header_wrap').addClass('open');
+    $('.header header-custom').addClass('open');
     $('.header .logo_brand').addClass('effect-running');
+    if(window.innerWidth < 767){
+      console.log("Delete poster video on mobile.");
+      $('video').removeAttr('poster');
+    }
   });
 
   //  isotope  demos 
@@ -89,18 +93,14 @@ $(document).on('DOMContentLoaded', function () {
   if (window.innerWidth > 1149) {
     let rows = $('.tb_row').toArray();
     let index0 = 0;
-    let in_space = 3;
+    let in_space = 9;
     $('.tb_row').hide();
     $(rows.splice(index0, in_space)).show();
     $(document).on('click', '[table_loadmore]', function (e) {
       e.preventDefault();
-      if (index0 < rows.length) {
-        $(rows.splice(index0, 300)).slideDown();
-      } else {
-        $(this).hide();
-        $(this).parents('.pm').find('.container .table_content').addClass('loaded')
-      }
-
+      $(rows.splice(index0, 300)).slideDown();
+      $(this).hide();
+      $(this).parents('.pm').find('.container .table_content').addClass('loaded')
     })
   }
 
@@ -219,104 +219,125 @@ $(document).on('DOMContentLoaded', function () {
   // Bắt đầu theo dõi phần tử mục tiêu
   // observer.observe(targetElement);
 
-  let box_anime = () => {
-    const wrapper = document.getElementById('scrollWrapper');
-    const boxes = document.querySelectorAll('.box-text');
 
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-    };
-
-    const handleIntersection = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // When the wrapper is in view
-          let tranx = Math.floor(Math.random() * entry.intersectionRatio * 500);
-          boxes[0].style.transform = `translateX(${tranx}px)`;
-          boxes[1].style.transform = `translateX(-${tranx}px)`;
-          // boxes[2].style.transform = 'scale(1.6)';
-          boxes[2].style.transform = `translateX(${tranx}px)`;
-          boxes[3].style.transform = `translateX(-${tranx}px)`;
-        } else {
-          boxes[0].style.transform = `translateX(0)`;
-          boxes[1].style.transform = `translateX(0)`;
-          // boxes[2].style.transform = 'scale(0.6)';
-          boxes[2].style.transform = `translateX(0)`;
-          boxes[3].style.transform = `translateX(0)`;
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, options);
-    observer.observe(wrapper);
+  // ==================
+  //    Modal popup
+  // ==================
+  const modalPopup = () => {
+    $(document).on('click', '[m-modal] .box-popup_click', function (e) {
+      e.preventDefault();
+      let parent = $(this).parents('[m-modal]');
+      let pop_item = {
+        ratio: parent.find('.ratio').attr('style'),
+        img: parent.find('[m-img]').attr('src'),
+        title: parent.find('[m-title]').html(),
+        content: parent.find('[m-body]').html()
+      }
+      // console.log(pop_item);
+      contentModal(pop_item);
+      openModal('.custom_modal')
+    });
+    $(document).on('click', '.custom_modal .overlay,.custom_modal .close-btn', function () {
+      closeModal('.custom_modal')
+    })
   }
-  // box_anime();
-})
-
-// ==================
-//    Modal popup
-// ==================
-const modalPopup = () => {
-  $(document).on('click', '[m-modal] .box-popup_click', function (e) {
-    e.preventDefault();
-    let parent = $(this).parents('[m-modal]');
-    let pop_item = {
-      ratio: parent.find('.ratio').attr('style'),
-      img: parent.find('[m-img]').attr('src'),
-      title: parent.find('[m-title]').html(),
-      content: parent.find('[m-body]').html()
-    }
-    // console.log(pop_item);
-    contentModal(pop_item);
-    openModal('.custom_modal')
-  });
-  $(document).on('click', '.custom_modal .overlay,.custom_modal .close-btn', function () {
-    closeModal('.custom_modal')
-  })
-}
-const openModal = (modal) => {
-  $(modal).addClass('show');
-}
-const closeModal = (modal) => {
-  $(modal).removeClass('show');
-}
-const contentModal = (content) => {
-  let ratio = $('.custom_modal').find('.ratio');
-  let img = $('.custom_modal').find('img');
-  let title = $('.custom_modal').find('.title');
-  let body_content = $('.custom_modal').find('.m-body');
-
-  if (!content) {
-    console.log("Modal: content is blank");
-    return;
+  const openModal = (modal) => {
+    $(modal).addClass('show');
   }
-  // ratio.attr('style',content.ratio)
-  img.attr('src', `${content.img}`);
-  title.html(content.title);
-  body_content.html(content.content);
-}
-modalPopup()
+  const closeModal = (modal) => {
+    $(modal).removeClass('show');
+  }
+  const contentModal = (content) => {
+    // let ratio = $('.custom_modal').find('.ratio');
+    let img = $('.custom_modal').find('img');
+    let title = $('.custom_modal').find('.title');
+    let body_content = $('.custom_modal').find('.m-body');
 
-// ==================
-//    open popup link
-// ==================
-
-const openPopupLink = () => {
-  let flag = false;
-
-  $(document).on('click', '[openPopupLink] a', function (e) {
-    if (flag == true) {
+    if (!content) {
+      console.log("Modal: content is blank");
       return;
     }
-    e.preventDefault();
-    let url = $(this).attr('href');
-    $('password-popup').addClass('open');
-    $('password-popup button.view_now').attr('data-location', url);
-    flag = true;
-  })
-}
+    // ratio.attr('style',content.ratio)
+    img.attr('src', `${content.img}`);
+    title.html(content.title);
+    body_content.html(content.content);
+  }
+  modalPopup()
+
+  // ==================
+  //    open popup link
+  // ==================
+
+  const openPopupLink = () => {
+
+    $(document).on('click', '[openPopupLink] a', function (e) {
+      e.preventDefault();
+      let url = $(this).attr('href');
+      $('password-popup').addClass('open');
+      $('password-popup button.view_now').attr('data-location', url);
+
+    })
+  }
+
+  openPopupLink();
 
 
-openPopupLink();
+  // reveal when scroll clean text
+  const rClear = () => {
+    let reveals = document.querySelectorAll('[text-animate-reveal]');
+    // attr parent
+    $('[text-reaveals-parent]').css({ 'perspective': '700px', 'transformStyle': 'preserve-3d', 'perspectiveOrigin': '100% 0%' })
+    if (window.innerWidth > 768) {
+      $(window).on('scroll', function () {
+        reveals.forEach((el, index) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+          const elHeight = $(this).height();
+          const revealPoint = 150;
+          // position & speed 
+
+          // attr node
+          el.style.transformOrigin = '50% 0';
+          el.style.translate = 'none';
+          el.style.rotate = 'none';
+          el.style.scale = 'none';
+          el.style.transition = 'all .35s ease';
+          // console.log(revealTop > windowHeight - revealPoint);
+          if (revealTop > windowHeight - revealPoint) {
+            if (index == 0) {
+              el.style.transform = `translateX(-8%)`;
+            }
+            if (index == 1) {
+
+              el.style.transform = `scale(1)`;
+            }
+            if (index == 2) {
+              el.style.transform = `translateX(4%)`;
+            }
+          }
+          if (revealTop < windowHeight - revealPoint) {
+            if (revealTop > -50) {
+              let schemas = revealTop / windowHeight * 100;
+
+              if (index == 0) {
+                console.log();
+                el.style.transform = `translateX(${-schemas / 10 + 0.55}%)`;
+              }
+              if (index == 2) {
+                el.style.transform = `translateX(${schemas / 10 - 7}%)`;
+              }
+
+            }
+            else {
+              el.style.transform = `translate(0,0)`
+            }
+          }
+
+        })
+      })
+    }
+  }
+  rClear();
+
+  // díable poster video on mobile
+})

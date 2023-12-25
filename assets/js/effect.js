@@ -79,10 +79,14 @@ class Effect extends HTMLElement {
     if (!this.querySelector('[effect-parent]')) {
       return
     }
+    if(window.innerWidth < 767){
+      return;
+    }
     this.EffNum = this.getAttribute('eff-num');
     this.container = this.querySelector('div[effect-parent]');
     this.background = 'none';
     this.createChild();
+   
     this.addEventListener('mousemove', (e) => {
       this.onHover(e);
     })
@@ -146,111 +150,3 @@ class Effect extends HTMLElement {
 }
 customElements.define('effect-custom', Effect);
 
-
-
-// ===============================
-//  ripple Effect
-// ===============================
-
-// struct
-//    <ripple-effect>
-//      <canvas id="canvas" width="100" height="400"></canvas>
-//    </ripple-effect>
-class RippeEffect extends HTMLElement {
-  constructor() {
-    super();
-
-    this.canvas = this.querySelector("canvas");
-    this.ctx = this.canvas.getContext("2d");
-    this.width = this.ctx.canvas.width;
-    this.height = this.ctx.canvas.height;
-    this.step = -4;
-    this.config = JSON.parse(this.getAttribute('config'))
-    console.log(this.config);
-
-    this.start()
-  }
-  start() {
-    requestAnimationFrame(() => {
-      this.start()
-    });
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.drawWave(2, "cos");
-    this.drawWave(4, "cos");
-    this.drawWave(5, "cos");
-    this.drawWave(6, "cos");
-    this.drawWave(10, "cos");
-    this.drawWave(12, "cos");
-    this.drawWave(14, "cos");
-    this.step += 5;
-  }
-  drawWave(amplitude, trig) {
-    // trig is the trigonometric function to be used: sin or cos
-    this.ctx.beginPath();
-    this.ctx.lineWidth = 1;
-    this.ctx.strokeStyle = this.config.color;
-    this.x = 0;
-    this.y = 0;
-    //this.amplitude = 10;
-    this.frequency = this.height / (2 * Math.PI);
-    this.ctx.save();
-    this.ctx.translate(-amplitude * Math[trig](this.step / this.frequency), 0);
-    while (this.y < this.height) {
-      this.x = this.width / 2 + amplitude * Math[trig]((this.y + this.step) / this.frequency);
-      this.ctx.lineTo(this.x, this.y);
-      this.y++;
-    }
-    this.ctx.stroke();
-    this.ctx.restore();
-  }
-}
-customElements.define('ripple-effect', RippeEffect)
-
-class galaxy extends HTMLElement {
-  constructor() {
-    super();
-    this.cnv = this.querySelector('canvas');
-    this.ctx = this.cnv.getContext('2d')
-    this.star_num = 200;
-    this.r = 3;
-    this.w = this.cnv.width;
-    this.h = this.cnv.height;
-    this.speed = 5;
-    this.arrPos = [{
-      x: 0,
-      y: 0,
-      color: '#fff'
-    }];
-    // this.randomPos()
-    // this.render();
-  }
-  render() {
-    for (let i = 0; i < this.arrPos.length; i++) {
-      this.star(this.arrPos[i].x, this.arrPos[i].y, this.r, this.arrPos[i].color)
-    }
-    requestAnimationFrame(() => {
-      this.render()
-    })
-  }
-  randomPos() {
-    for (let i = 0; i < this.star_num; i++) {
-      let x = Math.random() * this.w;
-      let y = Math.random() * this.h;
-      let color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-      this.arrPos.push({ x: x, y: y, color: color })
-    }
-    requestAnimationFrame(() => {
-      this.randomPos()
-    })
-
-  }
-  star(x, y, r, color) {
-
-    this.ctx.clearRect(0, 0, this.w, this.h);
-    this.ctx.fillStyle = color;
-    this.ctx.beginPath();
-    this.ctx.arc(x, y, r, 0, Math.PI * 2);
-    this.ctx.fill();
-  }
-}
-customElements.define('canvas-galaxy', galaxy)

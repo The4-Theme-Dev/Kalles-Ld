@@ -1,4 +1,11 @@
 /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/*
 * Prefixed by:
 * PostCSS: v7.0.29,
 * Autoprefixer: v9.7.6
@@ -32,12 +39,14 @@ section.topbar .hdt-icon-wrap .hdt-icon {
 }
 
 section.topbar .fire svg {
-  filter: drop-shadow(0px 0px 1.188px #F64B2C) drop-shadow(0px 0px 2.376px #F64B2C) drop-shadow(0px 0px 8.316px #F64B2C);
+  -webkit-filter: drop-shadow(0px 0px 1.188px #F64B2C) drop-shadow(0px 0px 2.376px #F64B2C) drop-shadow(0px 0px 8.316px #F64B2C);
+          filter: drop-shadow(0px 0px 1.188px #F64B2C) drop-shadow(0px 0px 2.376px #F64B2C) drop-shadow(0px 0px 8.316px #F64B2C);
 
 }
 
 section.topbar .storm svg {
-  filter: drop-shadow(0px 0px 1.836px #F5C413) drop-shadow(0px 0px 3.672px #F5C413) drop-shadow(0px 0px 12.852px #F5C413);
+  -webkit-filter: drop-shadow(0px 0px 1.836px #F5C413) drop-shadow(0px 0px 3.672px #F5C413) drop-shadow(0px 0px 12.852px #F5C413);
+          filter: drop-shadow(0px 0px 1.836px #F5C413) drop-shadow(0px 0px 3.672px #F5C413) drop-shadow(0px 0px 12.852px #F5C413);
 }
 
 .topbar .tb_open {
@@ -125,6 +134,21 @@ section.topbar .storm svg {
       2. Header
 =============================
 */
+header-custom {
+  opacity: 0;
+  -webkit-transform: translateY(-15px);
+      -ms-transform: translateY(-15px);
+          transform: translateY(-15px);
+}
+
+header-custom.open {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  visibility: visible;
+}
+
 .header .header_wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,14 +165,6 @@ section.topbar .storm svg {
   align-items: center;
   padding-top: 24px;
   padding-bottom: 24px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: .35s ease-in-out;
-  -o-transition: .35s ease-in-out;
-  transition: .35s ease-in-out;
 }
 
 .header .header-sticky .header_wrap {
@@ -156,13 +172,6 @@ section.topbar .storm svg {
   padding-bottom: 15px;
 }
 
-.header .header_wrap.open {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
-  visibility: visible;
-}
 
 .header_wrap .nav_list {
   display: -webkit-box;
@@ -328,9 +337,12 @@ section.topbar .storm svg {
 }
 
 .header header-custom {
-  -webkit-transition: .35s ease-in-out;
-  -o-transition: .35s ease-in-out;
-  transition: .35s ease-in-out;
+  -webkit-transition: top .15s ease, opacity .25s ease-in-out, background-color .25s linear, -webkit-transform .25s ease-in;
+  transition: top .15s ease, opacity .25s ease-in-out, background-color .25s linear, -webkit-transform .25s ease-in;
+  -o-transition: top .15s ease, opacity .25s ease-in-out, background-color .25s linear, transform .25s ease-in;
+  transition: top .15s ease, opacity .25s ease-in-out, background-color .25s linear, transform .25s ease-in;
+  transition: top .15s ease, opacity .25s ease-in-out, background-color .25s linear, transform .25s ease-in, -webkit-transform .25s ease-in;
+  will-change: top, opacity, background-color, transform;
 }
 
 /* 
@@ -460,8 +472,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 26px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 60%;
   left: -1px;
@@ -484,8 +496,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 26px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 60%;
   right: -1px;
@@ -588,8 +600,8 @@ section.topbar .storm svg {
   padding: 20px;
   border-radius: 16px;
   border: 0.5px solid rgba(255, 255, 255, 0.06);
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
   -webkit-backdrop-filter: blur(64px);
   backdrop-filter: blur(64px);
@@ -674,7 +686,13 @@ section.topbar .storm svg {
   transition: all .25s ease-in;
 }
 
-
+.banner .tab-item .tab-inner{
+  color: rgba(255, 255, 255, 0.40);
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.4;
+}
 
 .banner .tab-item .tab-inner::before {
   position: absolute;
@@ -700,6 +718,7 @@ section.topbar .storm svg {
 
 .banner .tab-item.active .tab-inner {
   color: #fff;
+  font-weight: 500;
 }
 
 .banner .tab-item.active .tab-inner .ico_wrap {
@@ -730,7 +749,7 @@ section.topbar .storm svg {
 }
 
 .banner .power-inner {
-  padding: 24px;
+  padding: 16px;
   border-radius: 12px;
   border: 0.5px solid rgba(255, 255, 255, 0.12);
   background: rgba(32, 32, 32, 0.32);
@@ -740,7 +759,6 @@ section.topbar .storm svg {
   display: -ms-flexbox;
   display: flex;
   gap: 12px;
-  height: 90px;
 }
 
 .banner .power_lite h5,
@@ -752,6 +770,7 @@ section.topbar .storm svg {
   line-height: normal;
   letter-spacing: -0.14px;
   white-space: nowrap;
+  margin-bottom: 0;
 }
 
 .banner .power_lite h6 span,
@@ -904,11 +923,11 @@ section.topbar .storm svg {
 }
 
 .banner .tab_content_inner.active .swiper .layout-img_mb {
-  width: 194px;
+  /* width: 194px; */
 }
 
 .banner .tab_content_inner.active .swiper .layout-img {
-  width: 488px;
+  /* width: 488px; */
 }
 
 .banner .swiper {
@@ -954,10 +973,13 @@ section.topbar .storm svg {
 .banner .ffy-item .visible-mb {
   display: none;
 }
+.banner .power_lite{
+  margin-top: auto;
+  margin-bottom: 40px;
+}
 
 .banner .ffy-item .tabs_list {
   margin-top: 55px;
-  margin-bottom: 15px;
 }
 
 .banner .effect_boder {
@@ -969,8 +991,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 250px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 80%;
   left: -12px;
@@ -986,8 +1008,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 250px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 80%;
   right: -12px;
@@ -1014,12 +1036,12 @@ section.topbar .storm svg {
   max-width: 100%;
   height: 522px;
   border-radius: 24px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 
 .banner .banner_video video {
-  opacity: 0.3;
+  /* opacity: 0.3; */
 }
 
 .banner .banner_video::before {
@@ -1027,8 +1049,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 180px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 10%;
   left: 1px;
@@ -1045,8 +1067,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 180px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 40%;
   right: 1px;
@@ -1096,6 +1118,11 @@ section.topbar .storm svg {
   width: 100%;
   height: 100%;
   position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.banner .bn_mb{
+  display: none;
 }
 
 .banner custom-video::before {
@@ -1103,8 +1130,8 @@ section.topbar .storm svg {
   content: "";
   inset: 0;
   border-radius: inherit;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
 }
 
@@ -1126,7 +1153,7 @@ section.topbar .storm svg {
   align-items: center;
   font-size: 24px;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .banner .bn_learn_more {
@@ -1135,8 +1162,9 @@ section.topbar .storm svg {
   font-weight: 500;
   line-height: 1.4;
   /* 22.4px */
-  text-decoration-line: underline;
-  margin-bottom: 57px;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  margin-bottom: 25px;
 }
 
 .banner .shopify .ratio {
@@ -1492,8 +1520,6 @@ section.topbar .storm svg {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 56px;
   padding: 0 15px;
@@ -1765,8 +1791,8 @@ section.topbar .storm svg {
   bottom: 0;
   left: 0;
   border-radius: 16px;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24)));
   background: -o-linear-gradient(left, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24)));
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%);
   z-index: -2;
 }
@@ -1844,7 +1870,9 @@ section.topbar .storm svg {
   gap: 32px;
   margin-bottom: 40px;
   font-size: 72px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .grid_demos .tophead .title .text-linear {
@@ -1953,8 +1981,8 @@ section.topbar .storm svg {
   border-radius: 16px;
   position: relative;
   padding: 16px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
@@ -1967,8 +1995,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 180px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 60%;
   left: -1px;
@@ -1984,8 +2012,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 180px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 60%;
   right: -1px;
@@ -2059,6 +2087,11 @@ section.topbar .storm svg {
   position: relative;
 }
 
+.demos_layout effect-custom {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .demos_layout .content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2118,9 +2151,6 @@ section.topbar .storm svg {
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -2133,6 +2163,12 @@ section.topbar .storm svg {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 90px;
 }
 
 .tabs_scroll .tab_scroll_layout .tabs .control-scroll {
@@ -2144,8 +2180,8 @@ section.topbar .storm svg {
   line-height: 1.4;
   letter-spacing: -1.28px;
   position: relative;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(rgba(255, 255, 255, 0.22)));
   background: -o-linear-gradient(top, #000 0%, rgba(255, 255, 255, 0.22) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(rgba(255, 255, 255, 0.22)));
   background: linear-gradient(180deg, #000 0%, rgba(255, 255, 255, 0.22) 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -2211,7 +2247,9 @@ section.topbar .storm svg {
   -ms-flex-pack: center;
   justify-content: center;
   pointer-events: none;
-  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
 }
 
 .tabs_scroll .tab_scroll_layout .scroll_grabs svg {
@@ -2256,8 +2294,8 @@ section.topbar .storm svg {
   position: absolute;
   content: "";
   inset: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0)));
   background: -o-linear-gradient(top, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0)));
   background: linear-gradient(180deg, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%);
   border-radius: 32px 32px 0px 0px;
 
@@ -2844,12 +2882,13 @@ section.topbar .storm svg {
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -6px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.72)), to(rgba(255, 255, 255, 0.03)));
   background: -o-linear-gradient(top, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.03) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.72)), to(rgba(255, 255, 255, 0.03)));
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.03) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 0;
 }
 
 .cs_s .content_inner {
@@ -2876,10 +2915,10 @@ section.topbar .storm svg {
 .cs_s .noty {
 
   padding: 24px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
-    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
   background: -o-linear-gradient(#000, #000) padding-box,
     -o-linear-gradient(left, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
+    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
   background: linear-gradient(#000, #000) padding-box,
     linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
   border-radius: 16px;
@@ -2890,7 +2929,12 @@ section.topbar .storm svg {
   margin-left: auto;
   margin-right: auto;
   margin-top: 32px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
 }
+
 
 /* featured2 */
 .fts2 .item-inner {
@@ -2930,8 +2974,15 @@ section.topbar .storm svg {
 
 .fts2 .item .content {
   z-index: 5;
+  position: relative;
+  pointer-events: none;
 }
-
+.fts2 .content .stock_svg{
+  position: absolute;bottom: 0;left: 50%;right: 0;
+  -webkit-transform: translateY(90%) translateX(-20%);
+      -ms-transform: translateY(90%) translateX(-20%);
+          transform: translateY(90%) translateX(-20%);
+}
 .fts2 .item1 .content {
   text-align: center;
   padding: 40px 15px 70px;
@@ -3090,6 +3141,7 @@ section.topbar .storm svg {
   bottom: 0;
   padding: 0 15px 56px;
   text-align: center;
+  pointer-events: none;
 }
 
 .fts2 .item12 .ratio {
@@ -3121,8 +3173,8 @@ section.topbar .storm svg {
   font-weight: 500;
   line-height: 1;
   letter-spacing: -5.2px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.72)), to(rgba(255, 255, 255, 0.00)));
   background: -o-linear-gradient(top, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.72)), to(rgba(255, 255, 255, 0.00)));
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.00) 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -3226,6 +3278,7 @@ section.topbar .storm svg {
   line-height: normal;
   letter-spacing: -0.4px;
   margin-bottom: 0;
+  font-size: 32px;
 }
 
 .pm .tophead h4 {
@@ -3246,8 +3299,8 @@ section.topbar .storm svg {
 
 .pm .tb_ct {
   padding: 48px 48px 0 48px;
-  background: -webkit-gradient(linear, left bottom, left top, from(#000), to(#000)) padding-box, -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0))) border-box;
   background: -o-linear-gradient(bottom, #000, #000) padding-box, -o-linear-gradient(top, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%) border-box;
+  background: -webkit-gradient(linear, left bottom, left top, from(#000), to(#000)) padding-box, -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0))) border-box;
   background: linear-gradient(0deg, #000, #000) padding-box, linear-gradient(180deg, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%) border-box;
   border-radius: 24px 24px 0 0;
   border: 1px solid transparent;
@@ -3341,8 +3394,8 @@ section.topbar .storm svg {
   bottom: 0;
   left: 0;
   right: 0;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(33.58%, rgba(0, 0, 0, 0.00)), color-stop(89.1%, #000), to(#000)), rgba(0, 0, 0, 0.06);
   background: -o-linear-gradient(top, rgba(0, 0, 0, 0.00) 33.58%, #000 89.1%, #000 100%), rgba(0, 0, 0, 0.06);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(33.58%, rgba(0, 0, 0, 0.00)), color-stop(89.1%, #000), to(#000)), rgba(0, 0, 0, 0.06);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 33.58%, #000 89.1%, #000 100%), rgba(0, 0, 0, 0.06);
   z-index: 2;
   pointer-events: none;
@@ -3467,13 +3520,12 @@ section.topbar .storm svg {
   content: "";
   inset: -1px;
   border-radius: 16px;
-  background: -o-linear-gradient(350deg, #00BAD4 7.72%, red 100%);
-  background: linear-gradient(100deg, #00BAD4 7.72%, red 100%);
-  -webkit-filter: blur(13.619377136230469px);
+  background:  linear-gradient(100deg, #00BAD4 7.72%, #2194FF 118.76%);
   filter: blur(13.619377136230469px);
   -webkit-animation: circle_linear 10s linear infinite;
   animation: circle_linear 10s linear infinite;
-  background-size: 400% 400%;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .pm .tb_ct .total {
@@ -3562,6 +3614,7 @@ section.topbar .storm svg {
   background: linear-gradient(81deg, #CE1BFB 10.86%, #35E6CC 89.96%);
   -webkit-filter: blur(231.4499969482422px);
   filter: blur(231.4499969482422px);
+  pointer-events: none;
 }
 
 .ecomrise .svg {
@@ -3669,11 +3722,11 @@ section.topbar .storm svg {
 .g_kl .claim {
   border: 0.5px solid transparent;
 
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
-    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
-
   background: -o-linear-gradient(#000, #000) padding-box,
     -o-linear-gradient(left, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
+    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
 
   background: linear-gradient(#000, #000) padding-box,
     linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
@@ -3767,11 +3820,11 @@ section.topbar .storm svg {
   padding: 56px 48px;
   border: 0.5px solid transparent;
 
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
-    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
-
   background: -o-linear-gradient(#000, #000) padding-box,
     -o-linear-gradient(left, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
+
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000)) padding-box,
+    -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.24)), color-stop(30.42%, rgba(255, 255, 255, 0)), color-stop(69.5%, rgba(255, 255, 255, 0)), to(rgba(255, 255, 255, 0.24))) border-box;
 
   background: linear-gradient(#000, #000) padding-box,
     linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 30.42%, rgba(255, 255, 255, 0) 69.5%, rgba(255, 255, 255, 0.24) 100%) border-box;
@@ -4002,15 +4055,15 @@ section.topbar .storm svg {
   transform: translateX(100%);
   -webkit-animation: rl_s_loading 2s infinite;
   animation: rl_s_loading 2s infinite;
+  background: -o-linear-gradient(left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(125, 185, 232, 0) 100%);
   background: -webkit-gradient(linear,
       left top, right top,
       from(rgba(255, 255, 255, 0)),
       color-stop(50%, rgba(255, 255, 255, 0.2)),
       to(rgba(125, 185, 232, 0)));
-  background: -o-linear-gradient(left,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(125, 185, 232, 0) 100%);
   background: linear-gradient(to right,
       rgba(255, 255, 255, 0) 0%,
       rgba(255, 255, 255, 0.2) 50%,
@@ -4056,8 +4109,11 @@ section.topbar .storm svg {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
+}
+.s_vv video{
+  content-visibility: auto;
+}
 .s_vv .bg_blur {
   border-radius: 438px;
   background: -o-linear-gradient(9deg, #CE1BFB 10.86%, #35E6CC 89.96%);
@@ -4114,7 +4170,9 @@ section.topbar .storm svg {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 15px;
@@ -4129,8 +4187,8 @@ section.topbar .storm svg {
 }
 
 .s_vv .content .s_v_i {
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0))) padding-box, -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.16)), to(rgba(255, 255, 255, 0))) border-box;
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0) 100%) padding-box, -o-linear-gradient(top, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%) border-box;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0))) padding-box, -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.16)), to(rgba(255, 255, 255, 0))) border-box;
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0) 100%) padding-box, linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%) border-box;
   border: 0.5px solid transparent;
   padding: 16px;
@@ -4169,10 +4227,10 @@ section.topbar .storm svg {
 }
 
 .pn .b_w {
-  background: -webkit-gradient(linear, left bottom, left top, from(#000), to(#000)) padding-box,
-    -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0))) border-box;
   background: -o-linear-gradient(bottom, #000, #000) padding-box,
     -o-linear-gradient(top, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%) border-box;
+  background: -webkit-gradient(linear, left bottom, left top, from(#000), to(#000)) padding-box,
+    -webkit-gradient(linear, left top, left bottom, from(#36E6CC), color-stop(69.39%, #C32BF8), to(rgba(0, 0, 0, 0))) border-box;
   background: linear-gradient(0deg, #000, #000) padding-box,
     linear-gradient(180deg, #36E6CC 0%, #C32BF8 69.39%, rgba(0, 0, 0, 0) 100%) border-box;
   border-radius: 24px 24px 0 0;
@@ -4183,8 +4241,8 @@ section.topbar .storm svg {
 
 .pn .ct_w {
   padding: 16px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
   border-radius: 16px;
   display: -webkit-box;
@@ -4384,8 +4442,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 26px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 60%;
   left: -1px;
@@ -4401,8 +4459,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 26px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 60%;
   right: -1px;
@@ -4597,8 +4655,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 150px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 60%;
   left: -1px;
@@ -4614,8 +4672,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 150px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 60%;
   right: -1px;
@@ -4639,7 +4697,7 @@ section.topbar .storm svg {
 .rl .inner .img_w {
   border-radius: 16px;
   overflow: hidden;
-  max-width: 568px;
+  /* max-width: 568px; */
 }
 
 .rl .inner .ct {
@@ -4728,8 +4786,8 @@ section.topbar .storm svg {
 
 .vt custom-video::before {
   border-radius: 24px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
   background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
   position: absolute;
   content: "";
@@ -4856,9 +4914,7 @@ section.topbar .storm svg {
 .kl_sp .section-inner {
   position: relative;
   padding: 128px 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1A1A1A), to(rgba(26, 26, 26, 0.00)));
-  background: -o-linear-gradient(top, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
-  background: linear-gradient(180deg, #1A1A1A 0%, rgba(26, 26, 26, 0.00) 100%);
+
 }
 
 .kl_sp .bg_blur {
@@ -4947,6 +5003,7 @@ section.topbar .storm svg {
   -ms-flex-align: center;
   align-items: center;
   gap: 4px;
+  margin-bottom: 56px;
 }
 
 .kl_sp :where(.team_preview, .res_info) {
@@ -5104,7 +5161,7 @@ section.topbar .storm svg {
   display: -ms-flexbox;
   display: flex;
   padding: 4px 6px;
-  height: 15px;
+  height: 16px;
   width: 28px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -5134,8 +5191,8 @@ section.topbar .storm svg {
 
   width: 1px;
   height: 150px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   top: 60%;
   left: -1px;
@@ -5154,8 +5211,8 @@ section.topbar .storm svg {
   content: "";
   width: 1px;
   height: 150px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: -o-linear-gradient(top, transparent 30%, #00BAD4 65%, transparent 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, transparent), color-stop(65%, #00BAD4), to(transparent));
   background: linear-gradient(180deg, transparent 30%, #00BAD4 65%, transparent 100%);
   bottom: 60%;
   right: -1px;
@@ -5225,10 +5282,11 @@ footer .content_wrap h4 {
   line-height: normal;
   letter-spacing: -0.4px;
   margin-bottom: 12px;
+  font-size: 32px;
 }
 
 footer .content_wrap h3 {
-  font-size: 104px;
+  font-size: 96px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.2;
@@ -5464,7 +5522,6 @@ footer .bg_blur {
 
 @media (min-width: 1400px) and (max-width: 1660px) {
   .banner .col-top {
-    padding: 0 20px;
     gap: 15px;
   }
 
@@ -5549,8 +5606,27 @@ footer .bg_blur {
 }
 
 @media (max-width: 1600px) {
+  .grid1 .grid_wrap{
+    padding: 0;
+  }
+  .ecomrise .title {
+    font-size: calc(48px * .75);
+    margin-bottom: 30px;
+  }
+
+  .ecomrise .list_fe {
+    margin-bottom: 30px;
+  }
+
+  .ecomrise .list_fe li {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
   .s_vv .ct_w .content {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   .banner .ffy-item .ffy-inner::before {
@@ -5579,6 +5655,12 @@ footer .bg_blur {
 }
 
 @media (max-width: 1440px) {
+  .kl_sp .res_w{
+    margin-bottom: 30px;
+  }
+  .pm .tophead h4 span,footer .content_wrap h4{
+    font-size: 24px;
+  }
   .pn .it .title {
     font-size: 14px;
   }
@@ -5823,7 +5905,7 @@ footer .bg_blur {
   }
 
   footer .content_wrap h3 {
-    font-size: 80px;
+    font-size: 70px;
   }
 
   .pm .tb_ct {
@@ -5835,13 +5917,19 @@ footer .bg_blur {
 
 
 @media (max-width: 1149px) {
+  .grid_demos .tophead .title{
+    font-size: 40px;
+  }
+  .pm .table_content::before{
+    display: none;
+  }
 
   .featured .wrapper .item .img_wrap:not(:first-child) {
     margin-top: 15px;
   }
 
   footer .content_wrap h3 {
-    font-size: 60px;
+    font-size: 50px;
     margin-bottom: 40px;
   }
 
@@ -6190,6 +6278,42 @@ footer .bg_blur {
 }
 
 @media (max-width: 1024px) {
+  .booster :where(.item1, .item2) .item-inner{
+    height: 380px;
+  }
+  .booster .item2 .content{
+    top: unset;bottom: 0;right: 0;left: 0;
+    text-align: center;
+    padding: 0 15px 15px;
+  }
+  .booster .item1 .content{
+    text-align: center;
+  }
+  .booster .item2 .color_list,.booster .item2 .size_list{
+    display: none;
+  }
+  .text-animate .svg_center{
+    width: 36px;
+    height: 36px;
+  }
+  .text-animate .wrap_linear_animation{
+    width: 250px;
+    height: 250px;
+    transform: translateX(43%) translateY(-41%);
+  }
+  .text-animate .svg_stroke{
+    margin-right: 120px;
+  }
+  .text-animate .rounded-text{
+    width: 250px;height: 250px;
+  }
+  .kl_sp .res_w{
+    margin-bottom: 20px;
+  }
+  .fts2 .content .stock_svg{
+    display: none;
+  }
+
   .fts2 .item .item-inner {
     max-height: unset !important;
   }
@@ -6403,9 +6527,32 @@ footer .bg_blur {
   .grid1 .grid_wrap {
     padding: 15px;
   }
+  .pm .tophead h4 span,footer .content_wrap h4{
+    font-size: 20px;
+  }
+  .grid1 .item2 .wrap_content{
+    justify-content: flex-end;
+  }
+  .grid1 .item2 .ffks{
+    font-size: 12px;
+  }
+  .grid1 .item2 .groups_sale :where(.sale1, .sale2){
+    gap: 5px;
+  }
+  .grid1 .item2 .groups_sale{
+    padding: 0;
+    gap: 3px;
+  }
+  .grid1 .item2 .circle{
+    width: 24px;height: 24px;
+  }
 }
 
 @media (max-width: 992px) {
+  .banner .heading-bot {
+    font-size: calc(72px * 0.5);
+  }
+
   .ft_bottom .wrap {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -6423,7 +6570,7 @@ footer .bg_blur {
   }
 
   footer .content_wrap h3 {
-    font-size: 50px;
+    font-size: 32px;
     margin-bottom: 30px;
   }
 
@@ -6538,11 +6685,84 @@ footer .bg_blur {
   .banner .ffy-item .visible-mb {
     display: block;
   }
+  .cs_s .noty{
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 767px) {
+  .banner .bn_mb{
+    display: block;
+  }
+  .banner .bn_dk{
+    display: none;
+  }
+  .fts2 .item4 .content,.fts2 .item5 .content{
+    padding-bottom: 10px;
+  }
+  .featured .section-inner{
+    padding-top: 120px;
+  }
+  .featured .box_sticky{
+    margin-bottom: 120px;
+  }
+  .banner custom-video::before{
+    display: none;
+  }
+  .pm .tb_ct .total .context_hilwo::before{
+    display: none;
+  }
+  .banner .banner_video{
+    overflow: hidden;
+  }
+  .grid_demos .tophead .title{
+    font-size: 30px;
+  }
+  #tabs_scroll_wrap{
+    display: none;
+  }
+  .grid1 .item2 .groups_sale{
+    padding: 0;
+  }
+  .grid1 .item2 .ffks{
+    font-size: 12px;
+  }
+  .grid1 .item2 .groups_sale :where(.sale1, .sale2){
+    gap: 3px;
+  }
+  .grid1 .grid_wrap::before{
+    display: none;
+  }
+  .pm .tophead h4 span,footer .content_wrap h4{
+    font-size: 14px;
+  }
+  .banner .heading-bot {
+    font-size: calc(72px * 0.35);
+  }
+  .cs_s .noty{
+    font-size: 12px;
+  }
+
+  .banner .heading-top {
+    font-size: 24px;
+  }
+
+  .ecomrise .title {
+    font-size: calc(48px * .5);
+    margin-bottom: 30px;
+  }
+
+  .ecomrise .list_fe {
+    margin-bottom: 30px;
+  }
+
+  .ecomrise .list_fe li {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
   .cs_s .tophead h2 {
-    font-size: calc(120px * 0.25);
+    font-size: calc(120px * 0.2);
     letter-spacing: 0.5px;
   }
 
@@ -6599,7 +6819,7 @@ footer .bg_blur {
   }
 
   footer .content_wrap h3 {
-    font-size: 30px;
+    font-size: 24px;
     letter-spacing: 0.5px;
   }
 
@@ -6798,7 +7018,7 @@ footer .bg_blur {
   }
 
   .fts2 .section-inner {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
   }
 
   .pm .tophead {
@@ -7007,7 +7227,7 @@ footer .bg_blur {
   }
 
   .grid1 .item .inner {
-    min-height: 300px;
+    min-height: 350px;
   }
 
   .banner .video_content {
@@ -7215,7 +7435,11 @@ footer .bg_blur {
     padding-bottom: 15px;
   }
 }
-
+@media(max-width: 400px){
+  .per .flex-el .el{
+    width: 320px;
+  }
+}
 @media (max-width: 375px) {
   .pn .box_t_ly .icon {
     width: 40px;

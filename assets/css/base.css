@@ -1,4 +1,11 @@
 /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/*
 * Prefixed by:
 * PostCSS: v7.0.29,
 * Autoprefixer: v9.7.6
@@ -143,22 +150,21 @@ button:focus {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  padding: 4px 6px;
+  padding: 0px 6px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 8px;
   border-radius: 28px;
   color: #FFF;
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1;
   text-transform: capitalize;
-  height: 15px;
+  height: 14px;
   position: absolute;
   top: -6px;
   right: 0;
@@ -395,7 +401,7 @@ drawer#menu_mobile {
   right: 0;
   bottom: 0;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 70vw;
   opacity: 0;
   visibility: hidden;
@@ -417,7 +423,7 @@ drawer#menu_mobile {
 }
 
 #menu_mobile .logo_brand {
-  width: 100%;
+  width: 70%;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -428,6 +434,7 @@ drawer#menu_mobile {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+          margin: 0 auto;
 }
 
 #menu_mobile .logo_brand::before {
@@ -540,7 +547,7 @@ drawer#menu_mobile {
 
 @media (max-width: 425px) {
   #menu_mobile.open .content {
-    padding-top: 30px;
+    padding: 30px 0;
     width: 85vw;
   }
 }
@@ -688,10 +695,10 @@ drawer#menu_mobile {
 /* border radius + linear */
 
 .btn-gradient-2 {
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(white)) padding-box,
-    -webkit-gradient(linear, left top, right top, from(darkblue), to(darkorchid)) border-box;
   background: -o-linear-gradient(white, white) padding-box,
     -o-linear-gradient(left, darkblue, darkorchid) border-box;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(white)) padding-box,
+    -webkit-gradient(linear, left top, right top, from(darkblue), to(darkorchid)) border-box;
   background: linear-gradient(white, white) padding-box,
     linear-gradient(to right, darkblue, darkorchid) border-box;
   border-radius: 50em;
@@ -741,4 +748,13 @@ back-top:hover {
   cursor: pointer;
   background-color: var(--link-color);
   color: var(--link-hover);
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  .featured .col-md-6{
+    /* width: 100%; */
+  }
+  .featured .item:nth-child(2){
+    display: none;
+  }
 }
