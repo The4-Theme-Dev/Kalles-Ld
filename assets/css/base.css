@@ -68,7 +68,7 @@
 
 body {
   color: #FFF;
-  font-family: "Poppins";
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -427,7 +427,7 @@ drawer#menu_mobile {
 }
 
 #menu_mobile .logo_brand {
-  width: 70%;
+  width: 30%;
   position: relative;
   display: flex;
   -align: center;
@@ -624,7 +624,12 @@ drawer#menu_mobile {
 }
 
 @media (min-width: 1150px) {
-
+  back-top:hover {
+    cursor: pointer;
+    background-color: var(--link-color);
+    color: var(--link-hover);
+  }
+  
   a:hover {
     color: var(--link-hover);
   }
@@ -718,7 +723,7 @@ back-top {
   transition: background-color .3s, opacity .5s, visibility .5s;
   opacity: 0;
   visibility: hidden;
-  z-index: 1000;
+  z-index: 10;
   display: flex;
   -align: center;
   -ms-flex-align: center;
@@ -734,11 +739,6 @@ back-top.show {
   visibility: visible;
 }
 
-back-top:hover {
-  cursor: pointer;
-  background-color: var(--link-color);
-  color: var(--link-hover);
-}
 
 @media (min-width: 768px) and (max-width: 991px) {
   .featured .col-md-6 {

@@ -45,6 +45,7 @@ customElements.define('fill-text', fillTextScrolling)
 class Effect extends HTMLElement {
   constructor() {
     super();
+    this.config = JSON.parse(this.getAttribute('config'));
     if (this.getAttribute('type') !== 'button') {
       return;
     }
@@ -52,15 +53,21 @@ class Effect extends HTMLElement {
       return
     }
     if (window.innerWidth < 767) {
-      return;
+      // if(!this.config.showMobile){
+        return;
+      // }
     }
     // this.EffNum = this.getAttribute('eff-num');
-    this.EffNum = 3;
+    this.EffNum = this.config.num || 3;
     this.container = this.querySelector('div[effect-parent]');
     this.background = 'none';
     this.createChild();
-
-    if (window.innerWidth > 1149) {
+   
+    if (window.innerWidth < 767) {
+      console.log("remove event effect hover button");
+      this.removeEventListener('mousemove',()=>{});
+      this.removeEventListener('mouseleave',()=>{});
+    }else{
       this.addEventListener('mousemove', (e) => {
         this.onHover(e);
       })

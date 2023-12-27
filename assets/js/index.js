@@ -5,21 +5,8 @@ $(document).on('DOMContentLoaded', function() {
   }).init();
   // topbar
 
-  let swiperOptions = {
-    speed: 10000,
-    autoplay: {
-      delay: 0,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true
-    },
-    loop: true,
-    slidesPerView: "auto",
-    watchSlidesProgress: true,
-    spaceBetween: 0,
-    grabCursor: false,
-    allowTouchMove: false
-  };
-  let topbar = new Swiper(".topbar .swiper", swiperOptions);
+  
+  
   // active link
   $(document).on('click', '.header .nav_link', function() {
     $('.header').find('.nav_link.active').removeClass('active');
@@ -196,7 +183,7 @@ $(document).on('DOMContentLoaded', function() {
   // sticky featured
   let header_height = $('header-custom').height();
 
-  $('.featured .box_sticky').attr('style', `--header-height: ${header_height}px;`);
+  $('.featured .box_sticky').attr('style', `--header-height: ${header_height + 10}px;`);
   // // Lấy ra phần tử mục tiêu
   // let targetElement = document.querySelector('.b_t_i');
   // let thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
@@ -350,5 +337,5 @@ $(document).on('DOMContentLoaded', function() {
   }
   rClear();
 
-  // díable poster video on mobile
+
 })
