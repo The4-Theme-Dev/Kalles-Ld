@@ -226,6 +226,7 @@ $(document).on('DOMContentLoaded', function() {
     });
     $(document).on('click', '.custom_modal .overlay,.custom_modal .close-btn', function() {
       closeModal('.custom_modal')
+      resetModal();
     })
   }
   const openModal = (modal) => {
@@ -248,6 +249,10 @@ $(document).on('DOMContentLoaded', function() {
     img.attr('src', `${content.img}`);
     title.html(content.title);
     body_content.html(content.content);
+  }
+  const resetModal =()=>{
+    let img = $('.custom_modal').find('img');
+    img.attr('src','data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==')
   }
   modalPopup()
 
