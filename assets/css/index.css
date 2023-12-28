@@ -388,7 +388,7 @@ header-custom header-custom {
 .banner .heading-bot {
   font-weight: 500;
   margin-bottom: 40px;
-  line-height: 100px;
+  line-height: 1.25;
   letter-spacing: -2.16px;
   font-size: 72px;
 }
@@ -6208,7 +6208,6 @@ footer .bg_blur {
   }
 
   .banner .heading-bot {
-    line-height: normal;
     letter-spacing: .4px;
     margin-bottom: 20px;
   }
@@ -6595,7 +6594,7 @@ footer .bg_blur {
 
 @media (max-width: 992px) {
   .banner .heading-bot {
-    font-size: calc(72px * 0.5);
+    font-size: calc(72px * 0.55);
   }
 
   .ft_bottom .wrap {
@@ -6831,7 +6830,7 @@ footer .bg_blur {
   }
 
   .banner .heading-bot {
-    font-size: calc(72px * 0.35);
+    font-size: calc(72px * 0.55);
   }
 
   .cs_s .noty {
@@ -6839,7 +6838,7 @@ footer .bg_blur {
   }
 
   .banner .heading-top {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .ecomrise .title {
