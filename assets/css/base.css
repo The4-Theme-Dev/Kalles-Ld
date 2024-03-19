@@ -783,6 +783,7 @@ back-top.show {
   border-radius: 60px;
   font-size: 14px;
   font-weight: 500;
+  pointer-events: auto;
 }
 .kxti .text-wrap svg{
   margin-left: 5px;
