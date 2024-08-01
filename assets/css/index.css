@@ -634,8 +634,22 @@ header-custom header-custom {
   -ms-flex-align: center;
   align-items: center;
   margin-right: 12px;
+  transition: background 5s ease-in-out, border 0s ;
 }
-
+.banner .tab-inner .ico_wrap::before{
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  background: var(--linear3);
+  position: absolute;
+  inset: 0;
+  content: "";
+  border-radius: inherit;
+  z-index: 1;
+}
+.banner .tab-inner .ico_wrap svg{
+  position: relative;
+  z-index: 2;
+}
 .banner .bannr_icon {
   width: 16px;
   height: 16px;
@@ -691,10 +705,13 @@ header-custom header-custom {
   font-weight: 500;
 }
 
-.banner .tab-item.active .tab-inner .ico_wrap {
+.banner .tab-item.active .tab-inner .ico_wrap::before {
+  opacity: 1;
+}
+/* .banner .tab-item.active .tab-inner .ico_wrap {
   border: none;
   background: var(--linear3);
-}
+} */
 
 
 
@@ -2323,6 +2340,7 @@ header-custom header-custom {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  font-family: 'Poppins';
 }
 
 /* text center */
@@ -5235,9 +5253,12 @@ footer .bg_blur {
   visibility: visible;
 }
 
-.banner .tab-item:hover .tab-inner .ico_wrap {
+/* .banner .tab-item:hover .tab-inner .ico_wrap {
   border: none;
   background: var(--linear3);
+} */
+.banner .tab-item:hover .tab-inner .ico_wrap::before{
+  opacity: 1;
 }
 
 .banner .tab-item:hover .tab-inner {
@@ -5351,7 +5372,7 @@ footer .bg_blur {
     padding: 0;
   }
 
-  .demos_layout :where(.demo_demos, .demo_ec_demos),
+  .demos_layout :where(.demo_demos, .demo_ec_demos,.buy_theme),
   .demos_layout .img_wrap::before {
     -webkit-transition: .25s ease-in;
     -o-transition: .25s ease-in;
@@ -5379,17 +5400,24 @@ footer .bg_blur {
   }
 
   .demos_layout .demo_ec_demos {
+    -webkit-transform: translateY(50%);
+    -ms-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+  .demos_layout .buy_theme {
     -webkit-transform: translateX(50%);
     -ms-transform: translateX(50%);
     transform: translateX(50%);
   }
 
-  .demos_layout .col-inner:hover :where(.demo_demos, .demo_ec_demos) {
+  .demos_layout .col-inner:hover :where(.demo_demos, .buy_theme) {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);
   }
-
+  .demos_layout .col-inner:hover .demo_ec_demos{
+    transform: translateY(0);
+  }
   .demos_layout .col-inner:hover .img_wrap::before {
     opacity: 1;
     -webkit-transform: translateY(0);

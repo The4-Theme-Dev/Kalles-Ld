@@ -262,7 +262,7 @@ $(document).on('DOMContentLoaded', function() {
 
   const openPopupLink = () => {
     let flag = false
-    $(document).on('click', '[openPopupLink] a', function(e) {
+    $(document).on('click', '[openPopupLink] a:not([no-popup])', function(e) {
 
       let url = $(this).attr('href');
       $('password-popup button.view_now').attr('data-location', url);
