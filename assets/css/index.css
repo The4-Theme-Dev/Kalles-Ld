@@ -3474,7 +3474,29 @@ header-custom header-custom {
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
 }
-
+.guard .wrap{
+  border: 0.5px solid #FFFFFF1F;
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  background: #20202052;
+  width: fit-content;
+  padding: 20px 50px 20px 20px;
+  display: flex;
+  gap:12px;
+  margin-bottom: 64px;
+}
+.guard .wrap > svg {
+  flex: 1 0 auto;
+}
+.guard p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.guard strong{
+  font-weight: 600;
+}
 .ecomrise .call_to_action .cta {
   gap: 8px;
 }
@@ -5613,7 +5635,7 @@ footer .bg_blur {
     margin-bottom: 30px;
   }
 
-  .ecomrise .list_fe {
+  .ecomrise .list_fe,.guard .wrap {
     margin-bottom: 30px;
   }
 
@@ -6395,7 +6417,8 @@ footer .bg_blur {
   }
 
   .ecomrise .title,
-  .ecomrise .list_fe {
+  .ecomrise .list_fe,
+  .guard .wrap {
     margin-bottom: 40px;
   }
 
@@ -6917,8 +6940,12 @@ footer .bg_blur {
   }
 
   .ecomrise .title,
-  .ecomrise .list_fe {
+  .ecomrise .list_fe,
+  .guard .wrap {
     margin-bottom: 25px;
+  }
+  .guard .wrap{
+    padding: 15px;
   }
 
   .ecomrise .list_fe li {
