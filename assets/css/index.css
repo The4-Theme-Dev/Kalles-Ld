@@ -6966,6 +6966,11 @@ footer .bg_blur {
 
   .ecomrise .list_fe li {
     font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .ecomrise .svg{
+    display: none;
   }
 
   footer .content_wrap h3 {
