@@ -4459,13 +4459,13 @@ header-custom header-custom {
 
 
 .pn .it.active::before {
-  /* top: 15%;
-  opacity: 1; */
+  top: 15%;
+  opacity: 1;
 }
 
 .pn .it.active::after {
-  /* bottom: 15%;
-  opacity: 1; */
+  bottom: 15%;
+  opacity: 1;
 }
 
 /* real live */
@@ -6798,6 +6798,13 @@ footer .bg_blur {
   }
   footer .sub_text .large{
     font-size: 14px;
+  }
+  .pn .pn-flex .it{
+    flex: 0 1 25%;
+    width: 25%;
+  }
+  .pn .pn-flex{
+    gap: 0;
   }
   .demos_layout .btn_demo_groups .btn_demos {
     background: var(--linear9);
