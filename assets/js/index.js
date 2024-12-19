@@ -45,12 +45,6 @@ $(document).on('DOMContentLoaded', function() {
     });
   });
 
-  //  tabs_demos scroll
-
-  $(document).on('click', '#tabs_scroll ul li .control-scroll', function() {
-    $(this).parents('ul').find('.control-scroll.active').removeClass('active');
-    $(this).addClass('active')
-  })
   // // scroll spy tabs_demos scroll
   // const nav = document.querySelector('#tabs_scroll_wrap');
   // const wrapper = document.querySelector('#tabs_scroll .wrapper')
