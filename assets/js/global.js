@@ -461,7 +461,7 @@ class BigUpdatePopup extends HTMLElement{
         
         .popup-content{
           opacity: 0;
-          transform: translateY(80%);
+          transform: scale(0.3);
           transition: opacity 0.5s ease 0.5s, transform 0.8s ease 0.5s;
         }
         
@@ -500,6 +500,7 @@ class BigUpdatePopup extends HTMLElement{
     
     // Định nghĩa các phần tử dùng chung một lần
     this.btn_close = this.shadowRoot.querySelector('button.close');
+    this.external_close = this.querySelector('button[name="close"]');
     this.overlay = this.shadowRoot.querySelector('slot[name="background"]');
     this.wrapper = this.shadowRoot.querySelector('.wrapper');
     this.popupContent = this.shadowRoot.querySelector('.popup-content');
@@ -536,7 +537,7 @@ class BigUpdatePopup extends HTMLElement{
     this.btn_close.style.setProperty('transform', 'translateX(20px)');
     
     this.popupContent.style.setProperty('opacity', '0');
-    this.popupContent.style.setProperty('transform', 'translateY(80%)');
+    this.popupContent.style.setProperty('transform', 'scale(0.3)');
     
     setTimeout(() => {
       this.background.style.setProperty('opacity', '0');
@@ -569,7 +570,7 @@ class BigUpdatePopup extends HTMLElement{
       
       setTimeout(() => {
         this.popupContent.style.setProperty('opacity', '1');
-        this.popupContent.style.setProperty('transform', 'translateY(0)');
+        this.popupContent.style.setProperty('transform', 'scale(1)');
         
         setTimeout(() => {
           this.btn_close.style.setProperty('opacity', '1');
@@ -579,13 +580,13 @@ class BigUpdatePopup extends HTMLElement{
     }, 300);
   }
   calcClose(){
-    this.header.style.setProperty('z-index', '1000002');
-    this.topbar.style.setProperty('z-index', '1000002');
-    let top = this.header.querySelector('.cta.light_skew');
-
+    
     if(window.innerWidth < 1200){
       this.wrapper.style.setProperty('--top',`10vh`);
     }else{
+      let top = this.header.querySelector('.cta.light_skew');
+      this.header.style.setProperty('z-index', '1000002');
+      this.topbar.style.setProperty('z-index', '1000002');
       this.wrapper.style.setProperty('--top',`${top.getBoundingClientRect().top + top.getBoundingClientRect().height + 30}px`);
     }
     
@@ -599,6 +600,9 @@ class BigUpdatePopup extends HTMLElement{
       this.hide();
     })
     this.overlay.addEventListener('click',()=>{
+      this.hide();
+    })
+    this.external_close.addEventListener('click',()=>{
       this.hide();
     })
   }

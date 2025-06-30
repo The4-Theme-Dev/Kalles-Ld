@@ -7737,6 +7737,7 @@ big-update-popup{
       }
     }
     .p-info{
+      padding-top: clamp(20px,5vh,50px);
       p{
         margin-bottom: 8px;
         small{
