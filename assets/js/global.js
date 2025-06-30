@@ -422,3 +422,186 @@ class stickyBanner extends HTMLElement{
   }
 }
 customElements.define('sticky-banner',stickyBanner)
+
+// ============================
+//      big update popup
+// ============================
+
+class BigUpdatePopup extends HTMLElement{
+  constructor(){
+    super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = `
+      <style>        
+        .wrapper{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: opacity 0.3s ease, transform 0.8s ease;
+          z-index: 888;
+          opacity: 0;
+        }
+        
+        slot[name="background"]{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+        
+        .popup-content{
+          opacity: 0;
+          transform: translateY(80%);
+          transition: opacity 0.5s ease 0.5s, transform 0.8s ease 0.5s;
+        }
+        
+        button.close{
+          position: absolute;
+          top: var(--top,8vh);
+          right: clamp(15px,5vw,77.5px);
+          width: 16px;
+          height: 16px;
+          background: transparent;
+          border: none;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+          transition: opacity 0.3s ease, transform 0.6s ease;
+          opacity: 0;
+          transform: translateX(20px);
+          transition: opacity 0.5s ease 0.8s, transform 0.6s ease 0.8s;
+          &:hover{
+            opacity: 0.8;
+          }
+        }
+      </style>
+      <div class="wrapper">
+      <button class="close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.5459 13.9541C15.7572 14.1654 15.876 14.4521 15.876 14.7509C15.876 15.0498 15.7572 15.3365 15.5459 15.5478C15.3346 15.7592 15.0479 15.8779 14.749 15.8779C14.4501 15.8779 14.1635 15.7592 13.9521 15.5478L7.99996 9.59375L2.0459 15.5459C1.83455 15.7573 1.54791 15.876 1.24902 15.876C0.950136 15.876 0.663491 15.7573 0.452147 15.5459C0.240802 15.3346 0.12207 15.0479 0.12207 14.7491C0.12207 14.4502 0.240803 14.1635 0.452147 13.9522L6.40621 8L0.454022 2.04594C0.242677 1.83459 0.123945 1.54795 0.123945 1.24906C0.123945 0.950177 0.242677 0.663532 0.454022 0.452188C0.665366 0.240843 0.95201 0.122111 1.2509 0.122111C1.54978 0.122111 1.83643 0.240843 2.04777 0.452188L7.99996 6.40625L13.954 0.45125C14.1654 0.239906 14.452 0.121174 14.7509 0.121174C15.0498 0.121174 15.3364 0.239906 15.5478 0.45125C15.7591 0.662594 15.8778 0.949239 15.8778 1.24813C15.8778 1.54701 15.7591 1.83366 15.5478 2.045L9.59371 8L15.5459 13.9541Z" fill="white" fill-opacity="0.64"/>
+        </svg>
+      </button>
+      <slot name="background"></slot>
+        <div class="popup-content">
+          <slot name="body"></slot>
+        </div>
+      </div>
+    `;
+    
+    // Định nghĩa các phần tử dùng chung một lần
+    this.btn_close = this.shadowRoot.querySelector('button.close');
+    this.overlay = this.shadowRoot.querySelector('slot[name="background"]');
+    this.wrapper = this.shadowRoot.querySelector('.wrapper');
+    this.popupContent = this.shadowRoot.querySelector('.popup-content');
+    this.background = this.shadowRoot.querySelector('slot[name="background"]');
+    this.header = document.querySelector('header-custom');
+    this.topbar = document.querySelector('header');
+    
+    this.init();
+    this.setUpEventListeners();
+  }
+  static get observedAttributes() {
+    return ['open'];
+  }
+  get Open(){
+    return this.hasAttribute('open');
+  }
+  show(){
+    const popupClosed = sessionStorage.getItem('popupClosed');
+    if (popupClosed === 'true') {
+      return;
+    }
+    this.animateOpen();
+  }
+  hide(){
+     if(this.Open) {
+      sessionStorage.setItem('popupClosed', 'true');
+      this.animateClose();
+     }
+  }
+  animateClose(){
+    this.btn_close.style.setProperty('opacity', '0');
+    this.btn_close.style.setProperty('transform', 'translateX(20px)');
+    
+    this.popupContent.style.setProperty('opacity', '0');
+    this.popupContent.style.setProperty('transform', 'translateY(80%)');
+    
+    setTimeout(() => {
+      this.background.style.setProperty('opacity', '0');
+    }, 500);
+    setTimeout(() => {
+      this.wrapper.style.setProperty('opacity', '0');
+      this.wrapper.style.setProperty('pointer-events', 'none');
+      this.removeAttribute('open');
+    }, 800);
+    
+    setTimeout(() => {
+      this.wrapper.style.setProperty('display', 'none');
+    }, 1100);
+
+    this.removeZIndex();
+  }
+  animateOpen(){
+    this.calcClose();
+    this.style.setProperty('display', 'block');
+    this.wrapper.style.setProperty('display', 'flex');
+    
+    setTimeout(() => {
+      this.setAttribute('open', '');
+      this.wrapper.style.setProperty('opacity', '1');
+      this.wrapper.style.setProperty('pointer-events', 'auto');
+      
+      this.background.style.setProperty('opacity', '1');
+      
+      setTimeout(() => {
+        this.popupContent.style.setProperty('opacity', '1');
+        this.popupContent.style.setProperty('transform', 'translateY(0)');
+        
+        setTimeout(() => {
+          this.btn_close.style.setProperty('opacity', '1');
+          this.btn_close.style.setProperty('transform', 'translateX(0)');
+        }, 300);
+      }, 500);
+    }, 300);
+  }
+  calcClose(){
+    this.header.style.setProperty('z-index', '1000');
+    this.topbar.style.setProperty('z-index', '1000');
+    let top = this.header.querySelector('.cta.light_skew');
+
+    if(window.innerWidth < 767){
+      this.wrapper.style.setProperty('--top',`10vh`);
+    }else{
+      this.wrapper.style.setProperty('--top',`${top.getBoundingClientRect().top + top.getBoundingClientRect().height + 30}px`);
+    }
+    
+  }
+  removeZIndex(){
+    this.header.style.removeProperty('z-index');
+    this.topbar.style.removeProperty('z-index');
+  }
+  setUpEventListeners(){
+    this.btn_close.addEventListener('click',()=>{
+      this.hide();
+    })
+    this.overlay.addEventListener('click',()=>{
+      this.hide();
+    })
+  }
+  init(){
+    setTimeout(() => {
+      this.show();
+    }, 500);
+  }
+}
+customElements.define('big-update-popup', BigUpdatePopup)
