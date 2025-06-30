@@ -1437,3 +1437,183 @@ password-popup span {
     transform: translateX(-100%);
   }
 }
+
+/* ============================
+   Big Update Popup Fade Effects
+   ============================ */
+
+/* Base fade states */
+big-update-popup [lmt-fade-down],
+big-update-popup [lmt-fade-left],
+big-update-popup [lmt-fade-up],
+big-update-popup [lmt-fade-right],
+big-update-popup [lmt-fade-scale] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+big-update-popup [lmt-fade-left] {
+  transform: translateX(-30px);
+}
+
+big-update-popup [lmt-fade-up] {
+  transform: translateY(-30px);
+}
+
+big-update-popup [lmt-fade-right] {
+  transform: translateX(30px);
+}
+
+big-update-popup [lmt-fade-scale] {
+  transform: scale(0.8);
+}
+
+/* Active states when popup is open */
+big-update-popup[open] [lmt-fade-down],
+big-update-popup[open] [lmt-fade-left],
+big-update-popup[open] [lmt-fade-up],
+big-update-popup[open] [lmt-fade-right],
+big-update-popup[open] [lmt-fade-scale] {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Staggered animation delays */
+big-update-popup[open] [lmt-fade-down] {
+  transition-delay: 0.6s;
+}
+
+big-update-popup[open] [lmt-fade-left] {
+  transition-delay: 0.8s;
+}
+
+big-update-popup[open] [lmt-fade-up] {
+  transition-delay: 1s;
+}
+
+big-update-popup[open] [lmt-fade-right] {
+  transition-delay: 0.7s;
+}
+
+big-update-popup[open] [lmt-fade-scale] {
+  transition-delay: 0.9s;
+}
+
+/* Multiple fade-up elements with different delays */
+big-update-popup[open] .p-group-btn [lmt-fade-up]:nth-child(1) {
+  transition-delay: 1s;
+}
+
+big-update-popup[open] .p-group-btn [lmt-fade-up]:nth-child(2) {
+  transition-delay: 1.2s;
+}
+
+big-update-popup[open] .p-info [lmt-fade-up]:nth-child(1) {
+  transition-delay: 1.4s;
+}
+
+big-update-popup[open] .p-info [lmt-fade-up]:nth-child(2) {
+  transition-delay: 1.6s;
+}
+
+big-update-popup[open] .p-info [lmt-fade-up]:nth-child(3) {
+  transition-delay: 1.8s;
+}
+
+/* Special effects for specific elements */
+big-update-popup[open] .p-content [lmt-fade-left] {
+  transition-delay: 0.8s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+big-update-popup[open] .p-u [lmt-fade-down] {
+  transition-delay: 0.6s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hover effects for interactive elements */
+big-update-popup .btn-full-transparent:hover,
+big-update-popup .btn-simple:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+big-update-popup .btn-full-transparent,
+big-update-popup .btn-simple {
+  transition: transform 0.3s ease;
+}
+
+/* Enhanced hover effects */
+big-update-popup .btn-full-transparent:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+big-update-popup .btn-simple:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth transitions for all interactive elements */
+big-update-popup a,
+big-update-popup button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  big-update-popup [lmt-fade-down],
+  big-update-popup [lmt-fade-left],
+  big-update-popup [lmt-fade-up],
+  big-update-popup [lmt-fade-right] {
+    transform: translateY(20px);
+  }
+  
+  big-update-popup [lmt-fade-left] {
+    transform: translateX(-20px);
+  }
+  
+  big-update-popup [lmt-fade-up] {
+    transform: translateY(-20px);
+  }
+  
+  big-update-popup [lmt-fade-right] {
+    transform: translateX(20px);
+  }
+  
+  big-update-popup [lmt-fade-scale] {
+    transform: scale(0.9);
+  }
+  
+  /* Reduce delays on mobile for better performance */
+  big-update-popup[open] [lmt-fade-down] {
+    transition-delay: 0.4s;
+  }
+  
+  big-update-popup[open] [lmt-fade-left] {
+    transition-delay: 0.8s;
+  }
+  
+  big-update-popup[open] [lmt-fade-up] {
+    transition-delay: 1.2s;
+  }
+  
+  big-update-popup[open] [lmt-fade-right] {
+    transition-delay: 0.5s;
+  }
+  
+  big-update-popup[open] [lmt-fade-scale] {
+    transition-delay: 0.7s;
+  }
+}
+
+/* Performance optimizations */
+big-update-popup [lmt-fade-down],
+big-update-popup [lmt-fade-left],
+big-update-popup [lmt-fade-up],
+big-update-popup [lmt-fade-right],
+big-update-popup [lmt-fade-scale] {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

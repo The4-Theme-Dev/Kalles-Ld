@@ -461,7 +461,6 @@ class BigUpdatePopup extends HTMLElement{
         
         .popup-content{
           opacity: 0;
-          transform: scale(0.3);
           transition: opacity 0.5s ease 0.5s, transform 0.8s ease 0.5s;
         }
         
@@ -537,7 +536,9 @@ class BigUpdatePopup extends HTMLElement{
     this.btn_close.style.setProperty('transform', 'translateX(20px)');
     
     this.popupContent.style.setProperty('opacity', '0');
-    this.popupContent.style.setProperty('transform', 'scale(0.3)');
+    
+    // Reset fade effects
+    this.resetFadeEffects();
     
     setTimeout(() => {
       this.background.style.setProperty('opacity', '0');
@@ -570,7 +571,8 @@ class BigUpdatePopup extends HTMLElement{
       
       setTimeout(() => {
         this.popupContent.style.setProperty('opacity', '1');
-        this.popupContent.style.setProperty('transform', 'scale(1)');
+        // Trigger fade effects after content is visible
+        this.triggerFadeEffects();
         
         setTimeout(() => {
           this.btn_close.style.setProperty('opacity', '1');
@@ -579,6 +581,23 @@ class BigUpdatePopup extends HTMLElement{
       }, 500);
     }, 300);
   }
+  
+  // Thêm các method mới để xử lý fade effects
+  triggerFadeEffects() {
+    // Các hiệu ứng fade sẽ được kích hoạt tự động thông qua CSS
+    // khi attribute 'open' được thêm vào
+    console.log('Fade effects triggered');
+  }
+  
+  resetFadeEffects() {
+    // Reset các hiệu ứng fade khi đóng popup
+    const fadeElements = this.querySelectorAll('[lmt-fade-down], [lmt-fade-left], [lmt-fade-up]');
+    fadeElements.forEach(element => {
+      element.style.transitionDelay = '0s';
+      element.style.opacity = '0';
+    });
+  }
+  
   calcClose(){
     
     if(window.innerWidth < 1200){
