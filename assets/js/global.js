@@ -443,7 +443,7 @@ class BigUpdatePopup extends HTMLElement{
           align-items: center;
           justify-content: center;
           transition: opacity 0.3s ease, transform 0.8s ease;
-          z-index: 888;
+          z-index: 1000001;
           opacity: 0;
         }
         
@@ -545,13 +545,14 @@ class BigUpdatePopup extends HTMLElement{
       this.wrapper.style.setProperty('opacity', '0');
       this.wrapper.style.setProperty('pointer-events', 'none');
       this.removeAttribute('open');
+      this.removeZIndex();
     }, 800);
     
     setTimeout(() => {
       this.wrapper.style.setProperty('display', 'none');
     }, 1100);
 
-    this.removeZIndex();
+
   }
   animateOpen(){
     this.calcClose();
@@ -578,8 +579,8 @@ class BigUpdatePopup extends HTMLElement{
     }, 300);
   }
   calcClose(){
-    this.header.style.setProperty('z-index', '1000');
-    this.topbar.style.setProperty('z-index', '1000');
+    this.header.style.setProperty('z-index', '1000002');
+    this.topbar.style.setProperty('z-index', '1000002');
     let top = this.header.querySelector('.cta.light_skew');
 
     if(window.innerWidth < 767){
