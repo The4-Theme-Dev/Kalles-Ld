@@ -506,6 +506,7 @@ class BigUpdatePopup extends HTMLElement{
     this.background = this.shadowRoot.querySelector('slot[name="background"]');
     this.header = document.querySelector('header-custom');
     this.topbar = document.querySelector('header');
+    this.html = document.querySelector('html');
     
     this.init();
     this.setUpEventListeners();
@@ -530,6 +531,7 @@ class BigUpdatePopup extends HTMLElement{
      }
   }
   animateClose(){
+    this.html.style.removeProperty('overflow');
     this.btn_close.style.setProperty('opacity', '0');
     this.btn_close.style.setProperty('transform', 'translateX(20px)');
     
@@ -553,6 +555,7 @@ class BigUpdatePopup extends HTMLElement{
   }
   animateOpen(){
     this.calcClose();
+    this.html.style.setProperty('overflow', 'hidden');
     this.style.setProperty('display', 'block');
     this.wrapper.style.setProperty('display', 'flex');
     
