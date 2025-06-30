@@ -583,7 +583,7 @@ class BigUpdatePopup extends HTMLElement{
     this.topbar.style.setProperty('z-index', '1000002');
     let top = this.header.querySelector('.cta.light_skew');
 
-    if(window.innerWidth < 767){
+    if(window.innerWidth < 1200){
       this.wrapper.style.setProperty('--top',`10vh`);
     }else{
       this.wrapper.style.setProperty('--top',`${top.getBoundingClientRect().top + top.getBoundingClientRect().height + 30}px`);
