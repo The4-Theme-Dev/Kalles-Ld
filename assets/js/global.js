@@ -628,7 +628,7 @@ class BigUpdatePopup extends HTMLElement{
   init(){
     setTimeout(() => {
       this.show();
-    }, 500);
+    }, 1500);
   }
 }
 customElements.define('big-update-popup', BigUpdatePopup)
