@@ -601,18 +601,18 @@ class BigUpdatePopup extends HTMLElement{
   calcClose(){
     
     if(window.innerWidth < 1200){
-      this.wrapper.style.setProperty('--top',`10vh`);
+      // this.wrapper.style.setProperty('--top',`10vh`);
     }else{
       let top = this.header.querySelector('.cta.light_skew');
-      this.header.style.setProperty('z-index', '1000002');
-      this.topbar.style.setProperty('z-index', '1000002');
-      this.wrapper.style.setProperty('--top',`${top.getBoundingClientRect().top + top.getBoundingClientRect().height + 30}px`);
+      // this.header.style.setProperty('z-index', '1000002');
+      // this.topbar.style.setProperty('z-index', '1000002');
+      // this.wrapper.style.setProperty('--top',`${top.getBoundingClientRect().top + top.getBoundingClientRect().height + 30}px`);
     }
     
   }
   removeZIndex(){
-    this.header.style.removeProperty('z-index');
-    this.topbar.style.removeProperty('z-index');
+    // this.header.style.removeProperty('z-index');
+    // this.topbar.style.removeProperty('z-index');
   }
   setUpEventListeners(){
     this.btn_close.addEventListener('click',()=>{

@@ -7644,7 +7644,7 @@ big-update-popup{
     display: flex;
     flex-direction: column;
     gap: clamp(15px,4vh,30px);
-    padding-top: clamp(20px, 15vh,200px);
+    /* padding-top: clamp(20px, 15vh,200px); */
     max-height: 95vh;
     overflow-y: auto;
     
