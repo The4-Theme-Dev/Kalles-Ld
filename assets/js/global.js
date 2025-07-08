@@ -430,6 +430,7 @@ customElements.define('sticky-banner',stickyBanner)
 class BigUpdatePopup extends HTMLElement{
   constructor(){
     super();
+    return;
     this.attachShadow({mode: 'open'});
     this.shadowRoot.innerHTML = `
       <style>        
@@ -632,3 +633,142 @@ class BigUpdatePopup extends HTMLElement{
   }
 }
 customElements.define('big-update-popup', BigUpdatePopup)
+
+
+// ============================
+//      custom popup
+// ============================
+
+
+// banner popup
+class bannerPopup extends HTMLElement{
+  static get observedAttributes(){
+    return ['open'];
+  }
+  get open(){
+    return this.hasAttribute('open');
+  }
+  constructor(){
+    super();
+    // return;
+    this.shown = JSON.parse(sessionStorage.getItem('bannerPopup'));
+    // console.log(this.shown)
+    if(this.shown) return;
+    this.attachShadow({mode:'open'});
+    const template = `
+      <style>
+        :host{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+        }
+        .wrap{
+            pointer-events:auto;
+        }
+        .overlay{
+          position: absolute;
+          inset:0;
+            background-color: rgba(0,0,0,0.1);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+          opacity: 0;
+          transition: .2s ease-in-out;
+          cursor: pointer;
+        }
+        .content{
+
+          z-index: 1;
+          position: relative;
+          transform: translateX(-20px);
+          opacity: 0;
+          transition: .3s ease-in-out;
+        }
+        .body{
+          width: min(1000px, 60vw);
+          aspect-ratio: 1778/1452;
+          border-radius: 10px;
+          overflow:hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 30px 0 rgba(255, 255, 255, 0.5);
+          @media (width < 767px){
+            width: 95vw;
+          }
+        }
+        button.close{
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          z-index: 2;
+          color: #fff;
+          font-zise: 1rem;
+          transition: .3s ease-in-out;
+        }
+        button.close:hover{
+          color: #db1512;
+        }
+      </style>
+      <div class="wrap">
+        <div class="overlay"></div>
+        <div class="content">
+          <button part="close" class="close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
+          </button>
+          <div class="body">
+            <slot></slot>
+          </div>
+        </div>
+      </div>
+    `
+    this.shadowRoot.innerHTML = template;
+
+    this.close = this.shadowRoot.querySelector('.close');
+    this.overlay = this.shadowRoot.querySelector('.overlay');
+    this.content = this.shadowRoot.querySelector('.content');
+    this.close.addEventListener('click',()=>{
+      this.closePopup();
+    });
+    this.overlay.addEventListener('click',()=>{
+      this.closePopup();
+    });
+    
+    let timeout = setTimeout(() => {
+      this.openPopup();
+      clearTimeout(timeout);
+    },5000);
+
+  }
+  openPopup(){
+    this.style.setProperty('display','flex');
+    setTimeout(() => {      
+      this.overlay.style.setProperty('opacity','1');
+      document.querySelector('html').style.setProperty('overflow','hidden');
+    }, 300);
+    setTimeout(() => {
+      this.content.style.setProperty('transform','translate(0,0)');
+      this.content.style.setProperty('opacity','1');
+    }, 500);
+  }
+  closePopup(){
+    this.content.style.setProperty('transform','translateX(20px)');
+    this.content.style.setProperty('opacity','0');
+    setTimeout(() => {      
+      this.overlay.style.setProperty('opacity','0');
+      document.querySelector('html').style.removeProperty('overflow');
+    }, 300);
+    setTimeout(() => {
+      this.style.setProperty('display','none');
+    }, 500);
+
+    sessionStorage.setItem('bannerPopup', true);
+  }
+
+}
+customElements.define('clx-banner-popup',bannerPopup);
+
+
