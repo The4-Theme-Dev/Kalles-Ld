@@ -1534,8 +1534,7 @@ big-update-popup[open] .p-u [lmt-fade-down] {
 }
 
 /* Hover effects for interactive elements */
-big-update-popup .btn-full-transparent:hover,
-big-update-popup .btn-simple:hover {
+big-update-popup .btn-full-transparent:hover {
   transform: translateY(-2px);
   transition: transform 0.3s ease;
 }
@@ -1548,10 +1547,6 @@ big-update-popup .btn-simple {
 /* Enhanced hover effects */
 big-update-popup .btn-full-transparent:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-big-update-popup .btn-simple:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Smooth transitions for all interactive elements */

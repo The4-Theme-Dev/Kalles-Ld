@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify JSON Converter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 antialiased">
+
+    <json-converter></json-converter>
+
+    <script>
+        class JsonConverter extends HTMLElement {
+            constructor() {
+                super();
+                // We don't use Shadow DOM here to make sure Tailwind styles are applied easily.
+            }
+
+            connectedCallback() {
+                this.innerHTML = `
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                        <div class="text-center mb-10">
+                            <h1 class="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
+                                Shopify Theme JSON Converter
+                            </h1>
+                            <p class="mt-3 max-w-md mx-auto text-base text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                                Công cụ chuyển đổi JSON từ định dạng cũ sang định dạng mới theo quy chuẩn.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <label for="oldJson" class="block text-sm font-medium text-gray-300 mb-2">1. Dán Old JSON vào đây:</label>
+                                <textarea id="oldJson" rows="20" class="block w-full bg-gray-800 border-gray-600 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-200 p-4" placeholder="Dán nội dung file old.json..."></textarea>
+                            </div>
+                            <div>
+                                <label for="newJson" class="block text-sm font-medium text-gray-300 mb-2">2. Kết quả New JSON:</label>
+                                <textarea id="newJson" rows="20" readonly class="block w-full bg-gray-800 border-gray-700 rounded-md shadow-sm text-gray-400 p-4" placeholder="Kết quả sẽ xuất hiện ở đây..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <button id="convertBtn" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                                Chuyển đổi
+                            </button>
+                            <button id="copyBtn" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-base font-medium rounded-md shadow-sm text-gray-200 bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors">
+                                Sao chép kết quả
+                            </button>
+                        </div>
+                         <div id="message" class="text-center mt-6 text-sm font-medium h-5"></div>
+                    </div>
+                `;
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                const convertBtn = this.querySelector('#convertBtn');
+                const copyBtn = this.querySelector('#copyBtn');
+                const oldJsonTextarea = this.querySelector('#oldJson');
+                
+                convertBtn.addEventListener('click', () => this.convertJson());
+                copyBtn.addEventListener('click', () => this.copyToClipboard());
+                
+                // Add a paste hint
+                oldJsonTextarea.addEventListener('focus', () => {
+                    this.displayMessage('Dán nội dung JSON cũ và nhấn nút "Chuyển đổi".', 'text-gray-400', 5000);
+                });
+            }
+
+            displayMessage(text, colorClass = 'text-green-400', duration = 3000) {
+                const messageEl = this.querySelector('#message');
+                messageEl.textContent = text;
+                messageEl.className = `text-center mt-6 text-sm font-medium h-5 ${colorClass}`;
+                if (duration) {
+                    setTimeout(() => {
+                        messageEl.textContent = '';
+                    }, duration);
+                }
+            }
+            
+            convertJson() {
+                const oldJsonTextarea = this.querySelector('#oldJson');
+                const newJsonTextarea = this.querySelector('#newJson');
+                let oldJsonValue = oldJsonTextarea.value.trim();
+                
+                // Remove the auto-generated comment block from Shopify theme files
+                const shopifyCommentRegex = /\/\*[\s\S]*?IMPORTANT: The contents of this file are auto-generated\.[\s\S]*?\*\//;
+                oldJsonValue = oldJsonValue.replace(shopifyCommentRegex, '').trim();
+
+                if (!oldJsonValue) {
+                    this.displayMessage('Vui lòng nhập JSON đầu vào.', 'text-yellow-400');
+                    return;
+                }
+
+                try {
+                    const oldData = JSON.parse(oldJsonValue);
+                    const newData = JSON.parse(JSON.stringify(oldData)); // Deep clone
+
+                    const sectionTypeMap = {
+                        'header-inline': 'header-inline-blocks',
+                        'header-menu-bottom': 'header-menu-bottom-blocks'
+                    };
+
+                    const blockTypesToConvert = new Set([
+                        'html', 'mega_shop', 'mega_product', 'mega_sale', 'mega_page', 'mega_blog'
+                    ]);
+
+                    const newBlockDefaults = {
+                        "html": "",
+                        "page": "",
+                        "blog": "",
+                        "product_list": [],
+                        "collection_list": [],
+                        "limit": 8,
+                        "image_ratio": "adapt_image",
+                        "image_size": true,
+                        "navUI": true,
+                        "collection_colors": "",
+                        "product_list_title": "BEST SELLER",
+                        "child_menu": ""
+                    };
+
+                    for (const sectionId in newData.sections) {
+                        if (Object.hasOwnProperty.call(newData.sections, sectionId)) {
+                            const section = newData.sections[sectionId];
+                            
+                            // Rule 1: Convert section type
+                            if (sectionTypeMap[section.type]) {
+                                const originalType = section.type;
+                                section.type = sectionTypeMap[originalType];
+
+                                const newBlocks = {};
+                                if (section.blocks && section.block_order) {
+                                    section.block_order.forEach(blockId => {
+                                        const oldBlock = section.blocks[blockId];
+                                        if (oldBlock && blockTypesToConvert.has(oldBlock.type)) {
+                                            
+                                            // Rule 3: Add mega_presets
+                                            const newSettings = {
+                                                ...newBlockDefaults,
+                                                ...oldBlock.settings,
+                                                mega_presets: oldBlock.type
+                                            };
+                                            
+                                            // Rule 2: Consolidate to _mega_block
+                                            newBlocks[blockId] = {
+                                                type: '_mega_block',
+                                                name: 'Mega Block', // New default name
+                                                settings: newSettings,
+                                                blocks: oldBlock.blocks || {} // Preserve nested blocks if any
+                                            };
+
+                                        } else if (oldBlock) {
+                                            // Copy other blocks that don't need conversion
+                                            newBlocks[blockId] = oldBlock;
+                                        }
+                                    });
+                                }
+                                section.blocks = newBlocks;
+                            }
+                            // Rule 5: Sections not in the map are kept as is.
+                        }
+                    }
+
+                    newJsonTextarea.value = JSON.stringify(newData, null, 2);
+                    this.displayMessage('Chuyển đổi thành công!', 'text-green-400');
+
+                } catch (error) {
+                    console.error("JSON Parsing or Conversion Error:", error);
+                    this.displayMessage('Lỗi: Dữ liệu JSON không hợp lệ. Vui lòng kiểm tra lại.', 'text-red-500');
+                    newJsonTextarea.value = '';
+                }
+            }
+
+            copyToClipboard() {
+                const newJsonTextarea = this.querySelector('#newJson');
+                if (!newJsonTextarea.value) {
+                    this.displayMessage('Không có gì để sao chép.', 'text-yellow-400');
+                    return;
+                }
+                
+                // Using document.execCommand as a fallback for iframe environments
+                newJsonTextarea.select();
+                newJsonTextarea.setSelectionRange(0, 99999); /* For mobile devices */
+                
+                try {
+                    document.execCommand('copy');
+                    this.displayMessage('Đã sao chép vào bộ nhớ tạm!', 'text-blue-400');
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                    this.displayMessage('Lỗi: Không thể sao chép tự động.', 'text-red-500');
+                }
+
+                window.getSelection().removeAllRanges();
+            }
+        }
+        customElements.define('json-converter', JsonConverter);
+    </script>
+</body>
+</html>
+

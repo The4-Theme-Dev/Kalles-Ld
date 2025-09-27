@@ -221,9 +221,9 @@ header-custom .header-sticky .header_wrap {
   font-style: normal;
   font-weight: 500;
   line-height: 22.4px;
-  -webkit-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
+  -webkit-transition: .15s ease-in-out;
+  -o-transition: .15s ease-in-out;
+  transition: .15s ease-in-out;
   white-space: nowrap;
   /* */
 }
@@ -7782,7 +7782,7 @@ big-update-popup{
           letter-spacing: -0.5px;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 4px 40px 0px rgba(0, 0, 0, 0.5);
+          /*box-shadow: 0 4px 40px 0px rgba(0, 0, 0, 0.5);*/
         }
         span{
           font-weight: 500;
@@ -7790,7 +7790,7 @@ big-update-popup{
           line-height: 1.2;
           letter-spacing: -0.5px;
           text-transform: uppercase;
-          box-shadow: 0 4px 40px 0px rgba(0, 0, 0, 0.5);
+          /*box-shadow: 0 4px 40px 0px rgba(0, 0, 0, 0.5);*/
         }
       }
     }
@@ -7841,22 +7841,4 @@ big-update-popup{
   padding: 0 10px;
   gap: 4px;
   font-size: 11px;
-}
-
-
-
-/* sale banner popup */
-clx-banner-popup{
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  pointer-events: none;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-}
-clx-banner-popup > *{
-  pointer-events: auto;
 }
