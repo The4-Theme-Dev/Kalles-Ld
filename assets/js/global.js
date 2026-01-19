@@ -759,3 +759,717 @@ class bannerPopup extends HTMLElement{
 
 }
 customElements.define('clx-banner-popup',bannerPopup);
+
+// render demos 
+/**
+ * Format listing demo
+ * [
+ *  {
+ *    "name": "Home Fashion Default",
+ *    "image": "./assets/images/demos/img/home-default.jpeg",
+ *    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156490727680&pb=0",
+ *    "type": "fashion" => from class="col col-12 col-sm-6 col-md-6 col-lg-4 fashion isotope-item" 
+ *    "version": 5.2 => from  "<div class="hdt-version-text"> Version 5.0 </div>",
+ *    "label": "Hot, New" => from class="demos_label",
+ *  }
+ * ]
+ */
+const demoListing =[
+  {
+    "name": "Home Fashion Default",
+    "handle": "home-fashion-default",
+    "image": "./assets/images/demos/img/home-default.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156490727680&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Multi Brand",
+    "handle": "multi-brand",
+    "image": "./assets/images/demos/img/multi_brand.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=178968330540&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Halloween",
+    "handle": "home-halloween",
+    "image": "./assets/images/demos/img/home-haloween.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179804307756&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Bags 2",
+    "handle": "home-bags-2",
+    "image": "./assets/images/demos/img/home-bag-2.jpg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=155554709760&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Tea",
+    "handle": "home-tea",
+    "image": "./assets/images/demos/img/home_tea.jpg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156224323840&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Scooter",
+    "handle": "home-scooter",
+    "image": "./assets/images/demos/img/home-scooter.jpg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156081488128&pb=0",
+    "type": "sport",
+    "version": 5.0,
+  },
+  {
+    "name": "Home POD",
+    "handle": "home-pod",
+    "image": "./assets/images/demos/img/home_pod.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=177438720300&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Decor 2",
+    "handle": "home-decor-2",
+    "image": "./assets/images/demos/img/home-decor2.jpeg",
+    "url": "http://kalles-5-2.myshopify.com/?preview_theme_id=156563243264&pb=0",
+    "type": "furniture",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Handmade 2",
+    "handle": "home-handmade-2",
+    "image": "./assets/images/demos/img/landing-handmade2.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=155836383488&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Bakery",
+    "handle": "home-bakery",
+    "image": "./assets/images/demos/img/home-bakery.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=155463221504&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Furniture 3",
+    "handle": "home-furniture-3",
+    "image": "./assets/images/demos/img/home-furniture-2.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179742048556&pb=0",
+    "type": "furniture",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Lingeries",
+    "handle": "home-lingeries",
+    "image": "./assets/images/demos/img/home-lingeries.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179842023724&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Blanket Pillow",
+    "handle": "home-blanketpillow",
+    "image": "./assets/images/demos/img/home-blanketpillow.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179784089900&pb=0",
+    "type": "furniture",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Pizzas",
+    "handle": "home-pizzas",
+    "image": "./assets/images/demos/img/home_pizzas.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179570180396&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Fashion 15",
+    "handle": "home-fashion-15",
+    "image": "./assets/images/demos/img/home-fashion-15.png",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=177245847852&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Furniture 4",
+    "handle": "home-furniture-4",
+    "image": "./assets/images/demos/img/home-furniture-4.jpeg",
+    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132177625253",
+    "type": "furniture",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Fashion Simple",
+    "handle": "home-fashion-simple",
+    "image": "./assets/images/demos/img/home-fashion-simple.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-fashion-simple/?preview_theme_id=168748745004",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Lookbook Collection",
+    "handle": "home-lookbook-collection",
+    "image": "./assets/images/demos/img/home-lookbook-collection.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-lookbook-collection?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Categories Links",
+    "handle": "home-categories-links",
+    "image": "./assets/images/demos/img/home-categories-links.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-categories-links/?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Electronic 4",
+    "handle": "home-electronic-4",
+    "image": "./assets/images/demos/img/home-electronic.jpeg",
+    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132174381221",
+    "type": "electronics",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Video Banner",
+    "handle": "home-video-banner",
+    "image": "./assets/images/demos/img/home-video-banner.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-video-banner/?preview_theme_id=168748745004",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Watches",
+    "handle": "home-watches",
+    "image": "./assets/images/demos/img/home-watches.jpeg",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180798816529&pb=0",
+    "type": "electronics",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Parallax",
+    "handle": "home-parallax",
+    "image": "./assets/images/demos/img/home-parallax.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-parallax/?preview_theme_id=168748745004",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Static Image",
+    "handle": "home-static-image",
+    "image": "./assets/images/demos/img/home-static-image.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-static-image/?preview_theme_id=168748745004",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Instagram Shop",
+    "handle": "home-instagram-shop",
+    "image": "./assets/images/demos/img/home-instagram-shop.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-instagram-shop?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home LookBook",
+    "handle": "home-lookbook",
+    "image": "./assets/images/demos/img/home-lookbook.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-lookbook?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Classic",
+    "handle": "home-classic",
+    "image": "./assets/images/demos/img/home-classic.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-classic/?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home New Furniture",
+    "handle": "home-new-furniture",
+    "image": "./assets/images/demos/img/home-furniture-modern.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128696221902",
+    "type": "furniture",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Metro",
+    "handle": "home-metro",
+    "image": "./assets/images/demos/img/home-metro.jpeg",
+    "url": "https://kalles-5.myshopify.com/pages/home-metro/?preview_theme_id=168748745004&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Fashion 9",
+    "handle": "home-fashion-9",
+    "image": "./assets/images/demos/img/home-fashion9.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=169121808684",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Fashion 10",
+    "handle": "home-fashion-10",
+    "image": "./assets/images/demos/img/home-fashion-10.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=177229496620&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Fashion 11",
+    "handle": "home-fashion-11",
+    "image": "./assets/images/demos/img/home-fashion-11.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=177264361772&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Ergonomic",
+    "handle": "home-ergonomic",
+    "image": "./assets/images/demos/img/home-ergonomic.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179483476268&pb=0",
+    "type": "furniture",
+    "version": 5.0,
+  },
+  {
+    "name": "Skincare",
+    "handle": "skincare",
+    "image": "./assets/images/demos/img/home-skincare.jpg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179532726572&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Furniture 5",
+    "handle": "furniture-5",
+    "image": "./assets/images/demos/img/home-furniture-5.jpeg",
+    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=137841574053",
+    "type": "furniture",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Organic",
+    "handle": "home-organic",
+    "image": "./assets/images/demos/img/home-organic.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128713982158",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Fashion 22",
+    "handle": "fashion-22",
+    "image": "./assets/images/demos/img/home-fashion-22.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=178675188012&pb=0",
+    "type": "fashion",
+    "version": 5.0,
+  },
+  {
+    "name": "Nutri-Vitamin",
+    "handle": "nutri-vitamin",
+    "image": "./assets/images/demos/img/home-nutri-vitamin.jpeg",
+    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132611768485",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Pets",
+    "handle": "home-pets",
+    "image": "./assets/images/demos/img/home-pets.png",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179728482604&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Tee Store",
+    "handle": "home-tee-store",
+    "image": "./assets/images/demos/img/home-tee.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=130070708381",
+    "type": "fashion",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Fashion Vertical",
+    "handle": "home-fashion-vertical",
+    "image": "./assets/images/demos/img/home-fashion-vertical.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132676976878",
+    "type": "fashion",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Fashion Trend",
+    "handle": "home-fashion-trend",
+    "image": "./assets/images/demos/img/home-fashion-trend.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132698669294",
+    "type": "fashion",
+    "version": 4.0,
+  },
+  {
+    "name": "Home New Fashion",
+    "handle": "home-new-fashion",
+    "image": "./assets/images/demos/img/home-new-fashion.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132700602606",
+    "type": "fashion",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Decor",
+    "handle": "home-decor",
+    "image": "./assets/images/demos/img/home-decor.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132703748334",
+    "type": "furniture",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Furniture",
+    "handle": "home-furniture",
+    "image": "./assets/images/demos/img/home-furniture-1.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128672530638",
+    "type": "furniture",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Furniture 2",
+    "handle": "home-furniture-2",
+    "image": "./assets/images/demos/img/home-furniture.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157264544000&pb=0",
+    "type": "furniture",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Electric",
+    "handle": "home-electric",
+    "image": "./assets/images/demos/img/home-electric.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132719673582",
+    "type": "electronics",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Electric Vertical",
+    "handle": "home-electric-vertical",
+    "image": "./assets/images/demos/img/home-electric-2.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157035790592&pb=0",
+    "type": "electronics",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Digital",
+    "handle": "home-digital",
+    "image": "./assets/images/demos/img/home-digital.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132721180910",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "One Product Store",
+    "handle": "one-product-store",
+    "image": "./assets/images/demos/img/home-single-product.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132722163950",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Hi Tech",
+    "handle": "home-hitech",
+    "image": "./assets/images/demos/img/home-hitech.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157194977536&pb=0",
+    "type": "electronics",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Phonecase 4",
+    "handle": "home-phonecase-4",
+    "image": "./assets/images/demos/img/home-phonecase.jpeg",
+    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132229365925",
+    "type": "electronics",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Handmade",
+    "handle": "home-handmade",
+    "image": "./assets/images/demos/img/home-handmade.jpeg",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=178560893228&pb=0",
+    "type": "more",
+    "version": 5.0,
+  },
+  {
+    "name": "Home Bag",
+    "handle": "home-bag",
+    "image": "./assets/images/demos/img/home-bag.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128697729230",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Shoes",
+    "handle": "home-shoes",
+    "image": "./assets/images/demos/img/home-shoes.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157077373184&pb=0",
+    "type": "more",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Medical",
+    "handle": "home-medical",
+    "image": "./assets/images/demos/img/home-medical.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129857487005",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Flowers",
+    "handle": "home-flowers",
+    "image": "./assets/images/demos/img/home-flower.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157067706624&pb=0",
+    "type": "flower",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Jewelry",
+    "handle": "home-jewelry",
+    "image": "./assets/images/demos/img/home-jewelry.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129857683613",
+    "type": "jewelry",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Bicycle",
+    "handle": "home-bicycle",
+    "image": "./assets/images/demos/img/home-bicycle.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129859158173",
+    "type": "sport",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Baby",
+    "handle": "home-baby",
+    "image": "./assets/images/demos/img/home-baby.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129744044189",
+    "type": "kids",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Kid & Accessories",
+    "handle": "home-kid-accessories",
+    "image": "./assets/images/demos/img/home-kid-accessories.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132724195566",
+    "type": "kids",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Yoga",
+    "handle": "home-yoga",
+    "image": "./assets/images/demos/img/home-yoga.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129859027101",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Hiking",
+    "handle": "home-hiking",
+    "image": "./assets/images/demos/img/home-hiking.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129844314269",
+    "type": "sport",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Glasses",
+    "handle": "home-glasses",
+    "image": "./assets/images/demos/img/home-glasses.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128703398094",
+    "type": "fashion",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Sport Accessories",
+    "handle": "home-sport-accessories",
+    "image": "./assets/images/demos/img/home-sport-accessories.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129857978525",
+    "type": "sport",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Sport",
+    "handle": "home-sport",
+    "image": "./assets/images/demos/img/home-sport-fitness.jpeg",
+    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132747329774",
+    "type": "sport",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Spa",
+    "handle": "home-spa",
+    "image": "./assets/images/demos/img/home-spa.jpeg",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180731445521&pb=0",
+    "type": "more",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Barber",
+    "handle": "home-barber",
+    "image": "./assets/images/demos/img/home-barber.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156666364160&pb=0",
+    "type": "more",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Plant",
+    "handle": "home-plant",
+    "image": "./assets/images/demos/img/home-plant.jpeg",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180780990737&pb=0",
+    "type": "more",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Plant 2",
+    "handle": "home-plant-2",
+    "image": "./assets/images/demos/img/home-plant-2.jpeg",
+    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129844379805",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Cosmetic",
+    "handle": "home-cosmetic",
+    "image": "./assets/images/demos/img/home-cosmetic.jpeg",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156823552256&pb=0",
+    "type": "more",
+    "version": 5.2,
+  },
+  {
+    "name": "Home Organic 2",
+    "handle": "home-organic-2",
+    "image": "./assets/images/demos/img/home-organic-2.jpeg",
+    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128714473678",
+    "type": "more",
+    "version": 4.0,
+  },
+  {
+    "name": "Home Drone",
+     "handle": "home-drone",
+     "image": "./assets/images/demos/img/home-drone.jpeg",
+     "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=157374808320&pb=0",
+     "type": "electronics",
+     "version": 5.2,
+  }
+]
+
+class demoGrid extends HTMLElement{
+  constructor(){
+    super();
+    this.buyUrl = "https://1.envato.market/nL6xBa";    
+  }
+  connectedCallback(){
+    let contentCache = localStorage.getItem('demo-grid-content');
+    
+    if(contentCache && !this.needRenderNewContent){
+      this.innerHTML = contentCache;
+    }else{
+      let content = this.renderContent;
+      this.innerHTML = content;
+      localStorage.setItem('demo-grid-content', content);
+    }
+    
+  }
+  get newDemo(){
+    return ["home-watches", "home-spa", "home-shoes", "home-plant", "home-hitech", "home-furniture-2", "home-flowers", "home-electric-vertical", "home-drone", "home-cosmetic", "home-barber"]
+  }
+
+  get needRenderNewContent(){
+    const newDemoCache = localStorage.getItem('demo-grid-new-demo').toString();
+    return newDemoCache === this.parseData(this.newDemo.join(','),'string');
+  }
+  get sortDemo(){ 
+    const sorted = [...demoListing].sort((a, b) => {
+      const indexA = this.newDemo.indexOf(a.handle);
+      const indexB = this.newDemo.indexOf(b.handle);
+      
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      if (indexA !== -1) return -1;
+      if (indexB !== -1) return 1;
+      return 0;
+    });
+    return sorted;
+  }
+
+  get renderContent(){
+    return this.sortDemo.map(item => this.renderItem(item)).join('');
+  }
+  includeNewDemo(handle){
+    return this.newDemo.indexOf(handle) !== -1;
+  }
+  parseData(data,type){
+    switch(type){
+      case 'string': 
+        return JSON.stringify(data);
+      default: 
+       return data;
+    }
+  }
+  renderItem(item){
+    const { name, image, url, type, version, handle } = item;
+    return `
+      <div class="col col-12 col-sm-6 col-md-6 col-lg-4 ${type} isotope-item">
+        <div class="col-inner">
+          <div class="img_wrap">
+            <div class="ratio" style="--aspect-ratioapt:405/286">
+              <img loading="lazy" src="${image}" alt="Demos">
+            </div>
+            <div class="btn_demo_groups">
+              <effect-custom type="button" config='{"num":3}' class="call_to_action demo_demos">
+                <div effect-parent="">
+                </div>
+                <a href="${url}" target="_blank"
+                  class="cta effect-border btn_demos light_skew">
+                  <span class="cta_text">
+                    Demo
+                  </span>
+                </a>
+              </effect-custom>
+              <effect-custom type="button" config='{"num":3}' class="call_to_action demo_ec_demos">
+                <div effect-parent="">
+                </div>
+                <a href="#" target="_blank" class="cta effect-border btn_demos light_skew">
+                  <span class="cta_text">
+                    EC Demo
+                  </span>
+                </a>
+              </effect-custom>
+              <effect-custom type="button" config='{"num":3}' class="call_to_action buy_theme">
+                <div effect-parent="">
+                </div>
+                <a href="${this.buyUrl}" target="_blank" class="cta effect-border btn_demos light_skew" no-popup>
+                  <span class="cta_text">
+                    Buy Kalles
+                  </span>
+                </a>
+              </effect-custom>
+            </div>
+          </div>
+          <div class="content">
+            <a class="title" href="${url}"
+              target="_blank">${name}</a>
+            <div class="d-flex align-items-center" style="gap: 10px;">
+              <div class="hdt-version v-2">
+                <div class="hdt-version-text">
+                  Version ${version}
+                </div>
+              </div>
+              ${this.includeNewDemo(handle) ? `<span class="demos_label">New</span>` : ''}
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  }
+}
+customElements.define('demo-grid',demoGrid);
