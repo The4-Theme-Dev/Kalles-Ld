@@ -1383,7 +1383,7 @@ class demoGrid extends HTMLElement{
   }
 
   get needRenderNewContent(){
-    const newDemoCache = localStorage.getItem('demo-grid-new-demo').toString();
+    const newDemoCache = localStorage.getItem('demo-grid-new-demo')?.toString() | '';
     return newDemoCache === this.parseData(this.newDemo.join(','),'string');
   }
   get sortDemo(){ 
