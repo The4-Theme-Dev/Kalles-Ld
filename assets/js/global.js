@@ -1075,9 +1075,9 @@ const demoListing =[
     "name": "Nutri-Vitamin",
     "handle": "nutri-vitamin",
     "image": "./assets/images/demos/img/home-nutri-vitamin.jpeg",
-    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132611768485",
+    "url": "https://demo-kalles-5-4.myshopify.com/?preview_theme_id=159347114223&pb=0",
     "type": "more",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Pets",
@@ -1219,9 +1219,9 @@ const demoListing =[
     "name": "Home Medical",
     "handle": "home-medical",
     "image": "./assets/images/demos/img/home-medical.jpeg",
-    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129857487005",
+    "url": "https://demo-kalles-5-4.myshopify.com/?preview_theme_id=159179342063&pb=0",
     "type": "more",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Flowers",
@@ -1364,26 +1364,27 @@ const demoListing =[
 class demoGrid extends HTMLElement{
   constructor(){
     super();
-    this.buyUrl = "https://1.envato.market/nL6xBa";    
+    this.buyUrl = "https://1.envato.market/nL6xBa"; 
+    this.cacheVersion = "version-04-26";
   }
   connectedCallback(){
-    let contentCache = localStorage.getItem('demo-grid-content');
+    let contentCache = localStorage.getItem(`demo-grid-new-demo-${this.cacheVersion}`);
     
     if(contentCache && !this.needRenderNewContent){
       this.innerHTML = contentCache;
     }else{
       let content = this.renderContent;
       this.innerHTML = content;
-      localStorage.setItem('demo-grid-content', content);
+      localStorage.setItem(`demo-grid-new-demo-${this.cacheVersion}`, content);
     }
     
   }
   get newDemo(){
-    return ["home-watches", "home-spa", "home-shoes", "home-plant", "home-hitech", "home-furniture-2", "home-flowers", "home-electric-vertical", "home-drone", "home-cosmetic", "home-barber"]
+    return ["nutri-vitamin", "home-medical"]
   }
 
   get needRenderNewContent(){
-    const newDemoCache = localStorage.getItem('demo-grid-new-demo')?.toString() | '';
+    const newDemoCache = localStorage.getItem(`demo-grid-new-demo-${this.cacheVersion}`)?.toString() | '';
     return newDemoCache === this.parseData(this.newDemo.join(','),'string');
   }
   get sortDemo(){ 
