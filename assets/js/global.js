@@ -905,9 +905,9 @@ const demoListing =[
     "name": "Home Furniture 4",
     "handle": "home-furniture-4",
     "image": "./assets/images/demos/img/home-furniture-4.jpeg",
-    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132177625253",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181220540689&pb=0",
     "type": "furniture",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Fashion Simple",
@@ -937,9 +937,9 @@ const demoListing =[
     "name": "Home Electronic 4",
     "handle": "home-electronic-4",
     "image": "./assets/images/demos/img/home-electronic.jpeg",
-    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132174381221",
+    "url": "https://demo-kalles-5-4.myshopify.com/?preview_theme_id=162718580975&pb=0",
     "type": "electronics",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Video Banner",
@@ -1048,6 +1048,14 @@ const demoListing =[
   {
     "name": "Skincare",
     "handle": "skincare",
+    "image": "./assets/images/demos/img/home-skincare-2.jpg",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181184561425&pb=0",
+    "type": "more",
+    "version": 5.4,
+  },
+  {
+    "name": "Skincare 2",
+    "handle": "skincare-2",
     "image": "./assets/images/demos/img/home-skincare.jpg",
     "url": "https://kalles-5.myshopify.com/?preview_theme_id=179532726572&pb=0",
     "type": "more",
@@ -1057,9 +1065,9 @@ const demoListing =[
     "name": "Furniture 5",
     "handle": "furniture-5",
     "image": "./assets/images/demos/img/home-furniture-5.jpeg",
-    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=137841574053",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181244199185&pb=0",
     "type": "furniture",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Organic",
@@ -1129,9 +1137,9 @@ const demoListing =[
     "name": "Home Decor",
     "handle": "home-decor",
     "image": "./assets/images/demos/img/home-decor.jpeg",
-    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132703748334",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156341895424&pb=0",
     "type": "furniture",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Furniture",
@@ -1153,9 +1161,9 @@ const demoListing =[
     "name": "Home Electric",
     "handle": "home-electric",
     "image": "./assets/images/demos/img/home-electric.jpeg",
-    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132719673582",
+    "url": "https://kalles-5-2.myshopify.com/?preview_theme_id=156058583296&pb=0",
     "type": "electronics",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Electric Vertical",
@@ -1177,9 +1185,9 @@ const demoListing =[
     "name": "One Product Store",
     "handle": "one-product-store",
     "image": "./assets/images/demos/img/home-single-product.jpeg",
-    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132722163950",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181349908753&pb=0",
     "type": "more",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Hi Tech",
@@ -1193,9 +1201,9 @@ const demoListing =[
     "name": "Home Phonecase 4",
     "handle": "home-phonecase-4",
     "image": "./assets/images/demos/img/home-phonecase.jpeg",
-    "url": "https://demo-kalles-4-4.myshopify.com/?preview_theme_id=132229365925",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181167161617&pb=0",
     "type": "electronics",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Handmade",
@@ -1209,9 +1217,9 @@ const demoListing =[
     "name": "Home Bag",
     "handle": "home-bag",
     "image": "./assets/images/demos/img/home-bag.jpeg",
-    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128697729230",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180944699665&pb=0",
     "type": "more",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Shoes",
@@ -1241,9 +1249,9 @@ const demoListing =[
     "name": "Home Jewelry",
     "handle": "home-jewelry",
     "image": "./assets/images/demos/img/home-jewelry.jpeg",
-    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129857683613",
+    "url": "https://kalles-5.myshopify.com/?preview_theme_id=179723305260&pb=0",
     "type": "jewelry",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Bicycle",
@@ -1257,9 +1265,9 @@ const demoListing =[
     "name": "Home Baby",
     "handle": "home-baby",
     "image": "./assets/images/demos/img/home-baby.jpeg",
-    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129744044189",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181262385425&pb=0",
     "type": "kids",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Kid & Accessories",
@@ -1289,9 +1297,9 @@ const demoListing =[
     "name": "Home Glasses",
     "handle": "home-glasses",
     "image": "./assets/images/demos/img/home-glasses.jpeg",
-    "url": "https://demo-kalles-4-1.myshopify.com/?preview_theme_id=128703398094",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181355217169&pb=0",
     "type": "fashion",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Sport Accessories",
@@ -1305,9 +1313,9 @@ const demoListing =[
     "name": "Home Sport",
     "handle": "home-sport",
     "image": "./assets/images/demos/img/home-sport-fitness.jpeg",
-    "url": "https://demo-kalles-4-3.myshopify.com/?preview_theme_id=132747329774",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181010825489&pb=0",
     "type": "sport",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Spa",
@@ -1337,9 +1345,9 @@ const demoListing =[
     "name": "Home Plant 2",
     "handle": "home-plant-2",
     "image": "./assets/images/demos/img/home-plant-2.jpeg",
-    "url": "https://demo-kalles-4-2.myshopify.com/?preview_theme_id=129844379805",
+    "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180854358289&pb=0",
     "type": "more",
-    "version": 4.0,
+    "version": 5.4,
   },
   {
     "name": "Home Cosmetic",
@@ -1371,7 +1379,7 @@ class demoGrid extends HTMLElement{
   constructor(){
     super();
     this.buyUrl = "https://1.envato.market/nL6xBa"; 
-    this.cacheVersion = "version-04-26";
+    this.cacheVersion = "version-08-22";
   }
   connectedCallback(){
     let contentCache = localStorage.getItem(`demo-grid-new-demo-${this.cacheVersion}`);
