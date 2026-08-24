@@ -1062,7 +1062,7 @@ const demoListing =[
     "version": 5.0,
   },
   {
-    "name": "Furniture 5",
+    "name": "Home Furniture 5",
     "handle": "furniture-5",
     "image": "./assets/images/demos/img/home-furniture-5.jpeg",
     "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181244199185&pb=0",
@@ -1198,7 +1198,7 @@ const demoListing =[
     "version": 5.2,
   },
   {
-    "name": "Home Phonecase 4",
+    "name": "Home Phonecase",
     "handle": "home-phonecase-4",
     "image": "./assets/images/demos/img/home-phonecase.jpeg",
     "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=181167161617&pb=0",
@@ -1214,8 +1214,8 @@ const demoListing =[
     "version": 5.0,
   },
   {
-    "name": "Home Bag",
-    "handle": "home-bag",
+    "name": "Home Bags",
+    "handle": "home-bags",
     "image": "./assets/images/demos/img/home-bag.jpeg",
     "url": "https://kalles-5-3.myshopify.com/?preview_theme_id=180944699665&pb=0",
     "type": "more",
@@ -1379,7 +1379,7 @@ class demoGrid extends HTMLElement{
   constructor(){
     super();
     this.buyUrl = "https://1.envato.market/nL6xBa"; 
-    this.cacheVersion = "version-08-22";
+    this.cacheVersion = "version-08-22-fix";
   }
   connectedCallback(){
     let contentCache = localStorage.getItem(`demo-grid-new-demo-${this.cacheVersion}`);
@@ -1394,7 +1394,7 @@ class demoGrid extends HTMLElement{
     
   }
   get newDemo(){
-    return ["nutri-vitamin", "home-medical"]
+    return ["home-furniture-4", "home-electronic-4", "skincare", "furniture-5", "home-decor", "home-electric", "one-product-store", "home-phonecase-4", "home-bags", "home-jewelry", "home-baby", "home-glasses", "home-sport", "home-plant-2"]
   }
 
   get needRenderNewContent(){
