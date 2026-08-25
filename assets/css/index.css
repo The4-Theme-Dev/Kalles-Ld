@@ -1995,6 +1995,7 @@ header-custom header-custom {
   justify-content: space-between;
   position: relative;
   z-index: 1;
+  gap: 10px;
 }
 
 .demos_layout .title {
@@ -7841,6 +7842,7 @@ big-update-popup{
   padding: 0 10px;
   gap: 4px;
   font-size: 11px;
+  white-space: nowrap;
 }
 
 
